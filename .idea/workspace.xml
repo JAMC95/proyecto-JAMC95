@@ -11,13 +11,6 @@
       <change beforePath="" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Obra.php" />
       <change beforePath="" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Recipiente.php" />
       <change beforePath="" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Ticket.php" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/19e74b37-3e57-4985-b92a-f9001cf939bf.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony-standard.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
     </list>
@@ -116,12 +109,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1525532006531</updated>
-      <workItem from="1525532007622" duration="90000" />
+      <workItem from="1525532007622" duration="123000" />
     </task>
+    <task id="LOCAL-00001" summary="Forzar borrar archivos que deberían de haber sido ignorados">
+      <created>1525532117881</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1525532117881</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90000" />
+    <option name="totallyTimeSpent" value="123000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -186,6 +187,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Forzar borrar archivos que deberían de haber sido ignorados" />
+    <option name="LAST_COMMIT_MESSAGE" value="Forzar borrar archivos que deberían de haber sido ignorados" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
