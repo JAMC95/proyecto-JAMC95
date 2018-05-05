@@ -99,5 +99,278 @@ class Ticket
 
 
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set tara
+     *
+     * @param integer $tara
+     *
+     * @return Ticket
+     */
+    public function setTara($tara)
+    {
+        $this->tara = $tara;
+
+        return $this;
+    }
+
+    /**
+     * Get tara
+     *
+     * @return integer
+     */
+    public function getTara()
+    {
+        return $this->tara;
+    }
+
+    /**
+     * Set bruto
+     *
+     * @param integer $bruto
+     *
+     * @return Ticket
+     */
+    public function setBruto($bruto)
+    {
+        $this->bruto = $bruto;
+
+        return $this;
+    }
+
+    /**
+     * Get bruto
+     *
+     * @return integer
+     */
+    public function getBruto()
+    {
+        return $this->bruto;
+    }
+
+    /**
+     * Set neto
+     *
+     * @param integer $neto
+     *
+     * @return Ticket
+     */
+    public function setNeto($neto)
+    {
+        $this->neto = $neto;
+
+        return $this;
+    }
+
+    /**
+     * Get neto
+     *
+     * @return integer
+     */
+    public function getNeto()
+    {
+        return $this->neto;
+    }
+
+    /**
+     * Set tieneRecipiente
+     *
+     * @param boolean $tieneRecipiente
+     *
+     * @return Ticket
+     */
+    public function setTieneRecipiente($tieneRecipiente)
+    {
+        $this->tieneRecipiente = $tieneRecipiente;
+
+        return $this;
+    }
+
+    /**
+     * Get tieneRecipiente
+     *
+     * @return boolean
+     */
+    public function getTieneRecipiente()
+    {
+        return $this->tieneRecipiente;
+    }
+
+    /**
+     * Set cantidadRecipiente
+     *
+     * @param integer $cantidadRecipiente
+     *
+     * @return Ticket
+     */
+    public function setCantidadRecipiente($cantidadRecipiente)
+    {
+        $this->cantidadRecipiente = $cantidadRecipiente;
+
+        return $this;
+    }
+
+    /**
+     * Get cantidadRecipiente
+     *
+     * @return integer
+     */
+    public function getCantidadRecipiente()
+    {
+        return $this->cantidadRecipiente;
+    }
+
+    /**
+     * Set camionero
+     *
+     * @param \AppBundle\Entity\Camionero $camionero
+     *
+     * @return Ticket
+     */
+    public function setCamionero(\AppBundle\Entity\Camionero $camionero)
+    {
+        $this->camionero = $camionero;
+
+        return $this;
+    }
+
+    /**
+     * Get camionero
+     *
+     * @return \AppBundle\Entity\Camionero
+     */
+    public function getCamionero()
+    {
+        return $this->camionero;
+    }
+
+    /**
+     * Set cliente
+     *
+     * @param \AppBundle\Entity\Empresa $cliente
+     *
+     * @return Ticket
+     */
+    public function setCliente(\AppBundle\Entity\Empresa $cliente)
+    {
+        $this->cliente = $cliente;
+
+        return $this;
+    }
+
+    /**
+     * Get cliente
+     *
+     * @return \AppBundle\Entity\Empresa
+     */
+    public function getCliente()
+    {
+        return $this->cliente;
+    }
+
+    /**
+     * Set empresaTransporte
+     *
+     * @param \AppBundle\Entity\Empresa $empresaTransporte
+     *
+     * @return Ticket
+     */
+    public function setEmpresaTransporte(\AppBundle\Entity\Empresa $empresaTransporte)
+    {
+        $this->empresaTransporte = $empresaTransporte;
+
+        return $this;
+    }
+
+    /**
+     * Get empresaTransporte
+     *
+     * @return \AppBundle\Entity\Empresa
+     */
+    public function getEmpresaTransporte()
+    {
+        return $this->empresaTransporte;
+    }
+
+    /**
+     * Set material
+     *
+     * @param \AppBundle\Entity\Material $material
+     *
+     * @return Ticket
+     */
+    public function setMaterial(\AppBundle\Entity\Material $material)
+    {
+        $this->material = $material;
+
+        return $this;
+    }
+
+    /**
+     * Get material
+     *
+     * @return \AppBundle\Entity\Material
+     */
+    public function getMaterial()
+    {
+        return $this->material;
+    }
+
+    /**
+     * Set obra
+     *
+     * @param \AppBundle\Entity\Obra $obra
+     *
+     * @return Ticket
+     */
+    public function setObra(\AppBundle\Entity\Obra $obra)
+    {
+        $this->obra = $obra;
+
+        return $this;
+    }
+
+    /**
+     * Get obra
+     *
+     * @return \AppBundle\Entity\Obra
+     */
+    public function getObra()
+    {
+        return $this->obra;
+    }
+
+    /**
+     * Set tipoRecipiente
+     *
+     * @param \AppBundle\Entity\Recipiente $tipoRecipiente
+     *
+     * @return Ticket
+     */
+    public function setTipoRecipiente(\AppBundle\Entity\Recipiente $tipoRecipiente = null)
+    {
+        $this->tipoRecipiente = $tipoRecipiente;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoRecipiente
+     *
+     * @return \AppBundle\Entity\Recipiente
+     */
+    public function getTipoRecipiente()
+    {
+        return $this->tipoRecipiente;
+    }
+}

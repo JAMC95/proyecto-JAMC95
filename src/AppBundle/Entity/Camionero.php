@@ -62,5 +62,158 @@ class Camionero
      */
     private $camioneroHabitual;
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dni
+     *
+     * @param integer $dni
+     *
+     * @return Camionero
+     */
+    public function setDni($dni)
+    {
+        $this->dni = $dni;
+
+        return $this;
+    }
+
+    /**
+     * Get dni
+     *
+     * @return integer
+     */
+    public function getDni()
+    {
+        return $this->dni;
+    }
+
+    /**
+     * Set nombreCamionero
+     *
+     * @param string $nombreCamionero
+     *
+     * @return Camionero
+     */
+    public function setNombreCamionero($nombreCamionero)
+    {
+        $this->nombreCamionero = $nombreCamionero;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreCamionero
+     *
+     * @return string
+     */
+    public function getNombreCamionero()
+    {
+        return $this->nombreCamionero;
+    }
+
+    /**
+     * Set direccion
+     *
+     * @param string $direccion
+     *
+     * @return Camionero
+     */
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+
+        return $this;
+    }
+
+    /**
+     * Get direccion
+     *
+     * @return string
+     */
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    /**
+     * Set fechaNacimiento
+     *
+     * @param \DateTime $fechaNacimiento
+     *
+     * @return Camionero
+     */
+    public function setFechaNacimiento($fechaNacimiento)
+    {
+        $this->fechaNacimiento = $fechaNacimiento;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaNacimiento
+     *
+     * @return \DateTime
+     */
+    public function getFechaNacimiento()
+    {
+        return $this->fechaNacimiento;
+    }
+
+    /**
+     * Set telefono
+     *
+     * @param integer $telefono
+     *
+     * @return Camionero
+     */
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    /**
+     * Get telefono
+     *
+     * @return integer
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    /**
+     * Set camioneroHabitual
+     *
+     * @param \AppBundle\Entity\Camión $camioneroHabitual
+     *
+     * @return Camionero
+     */
+    public function setCamioneroHabitual(\AppBundle\Entity\Camión $camioneroHabitual)
+    {
+        $this->camioneroHabitual = $camioneroHabitual;
+
+        return $this;
+    }
+
+    /**
+     * Get camioneroHabitual
+     *
+     * @return \AppBundle\Entity\Camión
+     */
+    public function getCamioneroHabitual()
+    {
+        return $this->camioneroHabitual;
+    }
+}

@@ -67,5 +67,199 @@ class Empresa
      * @ORM\JoinColumn(nullable=true)
      */
     private $obras;
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->obras = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nif
+     *
+     * @param string $nif
+     *
+     * @return Empresa
+     */
+    public function setNif($nif)
+    {
+        $this->nif = $nif;
+
+        return $this;
+    }
+
+    /**
+     * Get nif
+     *
+     * @return string
+     */
+    public function getNif()
+    {
+        return $this->nif;
+    }
+
+    /**
+     * Set nombreEmpresa
+     *
+     * @param integer $nombreEmpresa
+     *
+     * @return Empresa
+     */
+    public function setNombreEmpresa($nombreEmpresa)
+    {
+        $this->nombreEmpresa = $nombreEmpresa;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreEmpresa
+     *
+     * @return integer
+     */
+    public function getNombreEmpresa()
+    {
+        return $this->nombreEmpresa;
+    }
+
+    /**
+     * Set dirección
+     *
+     * @param string $dirección
+     *
+     * @return Empresa
+     */
+    public function setDirección($dirección)
+    {
+        $this->dirección = $dirección;
+
+        return $this;
+    }
+
+    /**
+     * Get dirección
+     *
+     * @return string
+     */
+    public function getDirección()
+    {
+        return $this->dirección;
+    }
+
+    /**
+     * Set teléfono
+     *
+     * @param integer $teléfono
+     *
+     * @return Empresa
+     */
+    public function setTeléfono($teléfono)
+    {
+        $this->teléfono = $teléfono;
+
+        return $this;
+    }
+
+    /**
+     * Get teléfono
+     *
+     * @return integer
+     */
+    public function getTeléfono()
+    {
+        return $this->teléfono;
+    }
+
+    /**
+     * Set esempresadetransporte
+     *
+     * @param boolean $esempresadetransporte
+     *
+     * @return Empresa
+     */
+    public function setEsempresadetransporte($esempresadetransporte)
+    {
+        $this->esempresadetransporte = $esempresadetransporte;
+
+        return $this;
+    }
+
+    /**
+     * Get esempresadetransporte
+     *
+     * @return boolean
+     */
+    public function getEsempresadetransporte()
+    {
+        return $this->esempresadetransporte;
+    }
+
+    /**
+     * Set camioneroHabitual
+     *
+     * @param \AppBundle\Entity\Camión $camioneroHabitual
+     *
+     * @return Empresa
+     */
+    public function setCamioneroHabitual(\AppBundle\Entity\Camión $camioneroHabitual)
+    {
+        $this->camioneroHabitual = $camioneroHabitual;
+
+        return $this;
+    }
+
+    /**
+     * Get camioneroHabitual
+     *
+     * @return \AppBundle\Entity\Camión
+     */
+    public function getCamioneroHabitual()
+    {
+        return $this->camioneroHabitual;
+    }
+
+    /**
+     * Add obra
+     *
+     * @param \AppBundle\Entity\Obra $obra
+     *
+     * @return Empresa
+     */
+    public function addObra(\AppBundle\Entity\Obra $obra)
+    {
+        $this->obras[] = $obra;
+
+        return $this;
+    }
+
+    /**
+     * Remove obra
+     *
+     * @param \AppBundle\Entity\Obra $obra
+     */
+    public function removeObra(\AppBundle\Entity\Obra $obra)
+    {
+        $this->obras->removeElement($obra);
+    }
+
+    /**
+     * Get obras
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getObras()
+    {
+        return $this->obras;
+    }
+}

@@ -35,5 +35,62 @@ class Obra
      */
     private $telefonoEncargado;
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nombreObra
+     *
+     * @param string $nombreObra
+     *
+     * @return Obra
+     */
+    public function setNombreObra($nombreObra)
+    {
+        $this->nombreObra = $nombreObra;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreObra
+     *
+     * @return string
+     */
+    public function getNombreObra()
+    {
+        return $this->nombreObra;
+    }
+
+    /**
+     * Set telefonoEncargado
+     *
+     * @param integer $telefonoEncargado
+     *
+     * @return Obra
+     */
+    public function setTelefonoEncargado($telefonoEncargado)
+    {
+        $this->telefonoEncargado = $telefonoEncargado;
+
+        return $this;
+    }
+
+    /**
+     * Get telefonoEncargado
+     *
+     * @return integer
+     */
+    public function getTelefonoEncargado()
+    {
+        return $this->telefonoEncargado;
+    }
+}
