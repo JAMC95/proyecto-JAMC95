@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Oyxgen';
+  src: url('https://fonts.googleapis.com/css?family=Oxygen') format('truetype');
+}
+
+$font-family: 'Oxygen', sans-serif;
+
+body{
+  font: 100% $font-family;
+
+
+}
