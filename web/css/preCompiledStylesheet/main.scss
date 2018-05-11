@@ -1,3 +1,6 @@
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../../../node_modules/select2-bootstrap-theme/src/select2-bootstrap";
+@import "../../../node_modules/font-awesome/scss/font-awesome";
 @font-face {
   font-family: 'Oyxgen';
   src: url('https://fonts.googleapis.com/css?family=Oxygen') format('truetype');
@@ -5,7 +8,7 @@
 
 $font-family: 'Oxygen', sans-serif;
 
-body{
+* {
   font: 100% $font-family;
 
 

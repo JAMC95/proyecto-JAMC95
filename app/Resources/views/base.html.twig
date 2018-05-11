@@ -2,13 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Cantera{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('dist/compiledStylesheet/pack.css') }}" />
-
+        {% block stylesheets %}
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
+
     <body>
-        {% block body %}{% endblock %}
+    {% block body %}  {% endblock %}
         <script src="{{ asset('dist/js/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('dist/js/bootstrap/bootstrap.min.js') }}"></script>
         <script src="{{ asset('dist/js/select2/select2.min.js') }}"></script>
@@ -19,4 +21,5 @@
             });
         </script>
     </body>
+
 </html>
