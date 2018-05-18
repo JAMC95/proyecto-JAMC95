@@ -5,12 +5,14 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\Security\Core\User\UserInterface;
-/**
- * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
- * @ORM\Table(name="usuario")
- */
 
-class Usuario  implements UserInterface
+/**
+ * User
+ *
+ * @ORM\Table(name="User")
+ * @ORM\Entity
+ */
+class User implements UserInterface
 {
     /**
      * @ORM\Id
