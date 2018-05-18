@@ -1,0 +1,50 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <h1>Camioneros</h1>
+
+        {# total items count #}
+        <div class="count">
+        <span class="label label-primary">
+            Entradas en total: {{ pagination.getTotalItemCount }}
+        </span>
+        </div>
+        <br/>
+        <table class="table table-bordered">
+            <tr>
+                {# sorting of properties based on query components #}
+                <th> ID
+                </th>
+                <th> Nombre
+                </th>
+            </tr>
+
+            {# table body #}
+            {% for entry in pagination %}
+                <tr {% if loop.index is odd %}class="color"{% endif %}>
+                    <td>{{ entry.id }}</td>
+                    <td>{{ entry.nombrecamionero }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        {# display navigation #}
+        <div class="navigation">
+
+        </div>
+
+        <a class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Atrás</a>
+        <a class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+
