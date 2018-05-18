@@ -56,6 +56,9 @@
     border-left: 3px solid #f1c40f;
     background-color: #607D8B;
 }
+.nav-side-menu  a {
+    color:  #ecf0f1;
+}
 .nav-side-menu ul .sub-menu li.active,
 .nav-side-menu li .sub-menu li.active {
     color: #f1c40f;
