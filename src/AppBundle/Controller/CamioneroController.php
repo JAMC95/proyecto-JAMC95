@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Form\Type\CamioneroType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,6 +31,38 @@ class CamioneroController extends Controller
             'pagination' => $pagination
 
         ));
+    }
+
+    /**
+     * @Route(path="/ldrivernew/", name="new_lorryDriver")
+     * @Route(path="/ldriveredit/{lorryDriver}", name="edit_lorryDriver")
+     * */
+    public function lorryDriverAlter(Request $request, Camionero $lorryDriver = null)
+    {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+        if(null === $lorryDriver) {
+            $lorryDriver = new Camionero();
+            $em->persist($lorryDriver);
+
+        }
+
+        $form = $this->createForm(camioneroType::class, $lorryDriver);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $em->flush();
+                return $this->redirectToRoute('lorry_drivers');
+            }
+            catch (\Exception $e) {
+                $this->addFlash('error', 'No se han podido guardar los cambios');
+            }
+        }
+        return $this->render('lorry_driver/form.html.twig', [
+            'formulario' => $form->createView(),
+            'lorryDriver' => $lorryDriver
+        ]);
     }
 
 }
