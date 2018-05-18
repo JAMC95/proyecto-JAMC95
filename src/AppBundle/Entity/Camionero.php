@@ -55,13 +55,6 @@ class Camionero
      */
     private $telefono;
 
-    /**
-     * var Camion
-     * @ORM\ManyToOne(targetEntity="Camion", inversedBy="camionHabitual")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $camioneroHabitual;
-
 
     /**
      * Get id
@@ -191,29 +184,5 @@ class Camionero
     public function getTelefono()
     {
         return $this->telefono;
-    }
-
-    /**
-     * Set camioneroHabitual
-     *
-     * @param \AppBundle\Entity\Camion $camioneroHabitual
-     *
-     * @return Camionero
-     */
-    public function setCamioneroHabitual(\AppBundle\Entity\Camion $camioneroHabitual)
-    {
-        $this->camioneroHabitual = $camioneroHabitual;
-
-        return $this;
-    }
-
-    /**
-     * Get camioneroHabitual
-     *
-     * @return \AppBundle\Entity\Camion
-     */
-    public function getCamioneroHabitual()
-    {
-        return $this->camioneroHabitual;
     }
 }
