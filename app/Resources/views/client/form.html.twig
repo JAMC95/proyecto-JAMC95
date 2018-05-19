@@ -1,0 +1,29 @@
+
+{% extends 'layout.html.twig' %}
+
+
+
+{% block content %}
+
+
+
+
+    <div class="form-group">
+        {{ form_start(formulario) }}
+        <div class="col-sm-12">
+
+        {{ form_widget(formulario) }}
+        </div>
+        <div class="col-sm-10">
+            <a href="{{ path('client') }}" class="btn btn-info"><i class="fa fa-backward"></i> Volver</a>
+            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar cambios</button>
+            {% if empresa.id %}
+
+                <a class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a>
+            {% endif %}
+
+
+        </div>
+    </div>
+    {{ form_end(formulario) }}
+{% endblock %}
