@@ -157,4 +157,14 @@ class User implements UserInterface
     {
         // no hacer nada
     }
+
+    /**
+     * Get admin
+     *
+     * @return boolean
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
 }

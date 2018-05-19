@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Empresa
  *
  * @ORM\Table(name="Empresa")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EmpresaRepository")
  */
 class Empresa
 {
@@ -28,25 +28,25 @@ class Empresa
     private $nif;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="nombre_empresa", type="integer", nullable=false)
+     * @ORM\Column(name="nombre_empresa", type="string", nullable=false)
      */
     private $nombreEmpresa;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="dirección", type="string", length=50, nullable=false)
+     * @ORM\Column(name="direccion", type="string", length=50, nullable=false)
      */
-    private $dirección;
+    private $direccion;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="teléfono", type="integer", nullable=false)
+     * @ORM\Column(name="telefono", type="integer", nullable=false)
      */
-    private $teléfono;
+    private $telefono;
 
     /**
      * @var boolean
@@ -57,7 +57,7 @@ class Empresa
     /**
      * var Camion
      * @ORM\ManyToOne(targetEntity="Camion", inversedBy="camionHabitual")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $camioneroHabitual;
 
@@ -136,13 +136,13 @@ class Empresa
     /**
      * Set dirección
      *
-     * @param string $dirección
+     * @param string $direccion
      *
      * @return Empresa
      */
-    public function setDirección($dirección)
+    public function setDireccion($direccion)
     {
-        $this->dirección = $dirección;
+        $this->direccion = $direccion;
 
         return $this;
     }
@@ -152,21 +152,21 @@ class Empresa
      *
      * @return string
      */
-    public function getDirección()
+    public function getDireccion()
     {
-        return $this->dirección;
+        return $this->direccion;
     }
 
     /**
      * Set teléfono
      *
-     * @param integer $teléfono
+     * @param integer $telefono
      *
      * @return Empresa
      */
-    public function setTeléfono($teléfono)
+    public function setTelefono($telefono)
     {
-        $this->teléfono = $teléfono;
+        $this->telefono = $telefono;
 
         return $this;
     }
@@ -176,9 +176,9 @@ class Empresa
      *
      * @return integer
      */
-    public function getTeléfono()
+    public function getTelefono()
     {
-        return $this->teléfono;
+        return $this->telefono;
     }
 
     /**
