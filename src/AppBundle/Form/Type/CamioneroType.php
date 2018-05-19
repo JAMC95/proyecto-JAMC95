@@ -5,10 +5,11 @@ namespace AppBundle\Form\Type;
 
 
 use AppBundle\Entity\Camionero;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
 
 class CamioneroType extends AbstractType
 {
@@ -24,8 +25,14 @@ class CamioneroType extends AbstractType
             ->add('direccion', null, [
                 'label' => 'Dirección '
             ])
-            ->add('fecha_nacimiento', null, [
-                'label' => 'Fecha nacimiento '
+            ->add('fecha_nacimiento', DateType::class, [ 'label' => 'Fecha de nacimiento',
+                'input'  => 'datetime',
+                'widget' => 'choice',
+                'format' => 'ddMMyyyy',
+                'placeholder' => array(
+                    'year' => 'Año', 'month' => 'Mes', 'day' => 'Día',
+
+                )
             ])
             ->add('telefono', null, [
                 'label' => 'Teléfono '
