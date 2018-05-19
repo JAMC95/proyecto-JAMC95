@@ -15,27 +15,46 @@
         <table class="table table-bordered">
             <tr>
                 {# sorting of properties based on query components #}
-                <th> ID
+
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Nombre', 'e.nombrecamionero') }}
                 </th>
-                <th> Nombre
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'DNI', 'e.dni') }}
                 </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Fecha de nacimiento', 'e.fechanacimiento') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Teléfono', 'e.telefono') }}
+                </th>
+                <th>Acción</th>
+
             </tr>
 
             {# table body #}
             {% for entry in pagination %}
+
                 <tr {% if loop.index is odd %}class="color"{% endif %}>
-                    <td>{{ entry.id }}</td>
+
                     <td>{{ entry.nombrecamionero }}</td>
+                    <td>{{ entry.dni }}</td>
+                    <td>{{ entry.fechanacimiento | date }}</td>
+                    <td>{{ entry.telefono }}</td>
+                    <td> <a class="btn btn-info" href="{{ path('edit_lorryDriver', {'lorryDriver': entry.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a></td>
+
                 </tr>
+
             {% endfor %}
         </table>
         {# display navigation #}
         <div class="navigation">
-
+            {{ knp_pagination_render(pagination) }}
         </div>
 
-        <a class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Atrás</a>
-        <a class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
+        <a href="{{ path('homepage') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Atrás</a>
+        <a href="{{ path('new_lorryDriver') }}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
     </div>
 
 {% endblock %}
