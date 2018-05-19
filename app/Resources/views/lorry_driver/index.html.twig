@@ -26,6 +26,10 @@
                     {{ knp_pagination_sortable(pagination, 'Fecha de nacimiento', 'e.fechanacimiento') }}
                 </th>
                 <th>
+                    {{ knp_pagination_sortable(pagination, 'Dirección', 'e.direccion') }}
+                </th>
+
+                <th>
                     {{ knp_pagination_sortable(pagination, 'Teléfono', 'e.telefono') }}
                 </th>
                 <th>Acción</th>
@@ -40,6 +44,7 @@
                     <td>{{ entry.nombrecamionero }}</td>
                     <td>{{ entry.dni }}</td>
                     <td>{{ entry.fechanacimiento | date }}</td>
+                    <td>{{ entry.direccion }}</td>
                     <td>{{ entry.telefono }}</td>
                     <td> <a class="btn btn-info" href="{{ path('edit_lorryDriver', {'lorryDriver': entry.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a></td>
