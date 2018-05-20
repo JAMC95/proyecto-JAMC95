@@ -29,6 +29,13 @@ class Obra
     private $nombreObra;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="direccion", type="string", length=50, nullable=false)
+     */
+    private $direccion;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="telefono_encargado", type="integer", nullable=false)
@@ -92,5 +99,29 @@ class Obra
     public function getTelefonoEncargado()
     {
         return $this->telefonoEncargado;
+    }
+
+    /**
+     * Set direccion
+     *
+     * @param string $direccion
+     *
+     * @return Obra
+     */
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+
+        return $this;
+    }
+
+    /**
+     * Get direccion
+     *
+     * @return string
+     */
+    public function getDireccion()
+    {
+        return $this->direccion;
     }
 }
