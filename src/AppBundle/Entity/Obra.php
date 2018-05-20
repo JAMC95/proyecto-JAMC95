@@ -124,4 +124,11 @@ class Obra
     {
         return $this->direccion;
     }
+
+    public function __toString()
+    {
+       return $this->nombreObra;
+    }
+
+
 }
