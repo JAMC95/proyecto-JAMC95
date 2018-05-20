@@ -34,8 +34,8 @@ class ObrasController extends Controller
     }
 
     /**
-     * @Route(path="/worksnew/", name="new_lorryDriver")
-     * @Route(path="/worksEdit/{works}", name="edit_lorryDriver")
+     * @Route(path="/worksnew/", name="new_works")
+     * @Route(path="/worksEdit/{works}", name="edit_works")
      * */
     public function lorryDriverAlter(Request $request, Obra $works = null)
     {
