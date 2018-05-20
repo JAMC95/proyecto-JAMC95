@@ -37,7 +37,7 @@ class ObrasController extends Controller
      * @Route(path="/worksnew/", name="new_works")
      * @Route(path="/worksEdit/{works}", name="edit_works")
      * */
-    public function lorryDriverAlter(Request $request, Obra $works = null)
+    public function worksAlter(Request $request, Obra $works = null)
     {
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
@@ -53,7 +53,7 @@ class ObrasController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $em->flush();
-                return $this->redirectToRoute('lorry_drivers');
+                return $this->redirectToRoute('works');
             }
             catch (\Exception $e) {
                 $this->addFlash('error', 'No se han podido guardar los cambios');

@@ -37,7 +37,7 @@
                     <td>{{ entry.nombreobra }}</td>
                     <td>{{ entry.direccion }}</td>
                     <td>{{ entry.telefonoencargado }}</td>
-                    <td> <a class="btn btn-info" href="{{ path('edit_lorryDriver', {'lorryDriver': entry.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    <td> <a class="btn btn-info" href="{{ path('edit_works', {'works': entry.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a></td>
 
                 </tr>
@@ -50,7 +50,7 @@
         </div>
 
         <a href="{{ path('homepage') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Atrás</a>
-        <a href="{{ path('new_lorryDriver') }}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
+        <a href="{{ path('new_works') }}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
     </div>
 
 {% endblock %}
