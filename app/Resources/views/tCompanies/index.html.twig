@@ -1,0 +1,73 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <h1>Empresas de transporte</h1>
+
+        {# total items count #}
+        <div class="count">
+        <span class="label label-primary">
+            Entradas en total: {{ pagination.getTotalItemCount }}
+        </span>
+        </div>
+        <br/>
+        <table class="table table-bordered">
+            <tr>
+                {# sorting of properties based on query components #}
+
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Nombre', 'e.nombreempresa') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'NIF', 'e.nif') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Direccion', 'e.direccion') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Teléfono', 'e.telefono') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Camión habitual', 'e.camionHabitual') }}
+                </th>
+                <th>Acción</th>
+
+            </tr>
+
+            {# table body #}
+            {% for entry in pagination %}
+
+                <tr {% if loop.index is odd %}class="color"{% endif %}>
+
+                    <td>{{ entry.nombreempresa }}</td>
+                    <td>{{ entry.nif }}</td>
+                    <td>{{ entry.direccion }}</td>
+                    <td>{{ entry.telefono }}</td>
+                    <td>{{ entry.camionHabitual }}</td>
+                    <td> <a class="btn btn-info" href="{{ path('edit_tcompany', {'tcompany': entry.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a></td>
+
+                </tr>
+
+            {% endfor %}
+        </table>
+        {# display navigation #}
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+        <a href="{{ path('homepage') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Atrás</a>
+        <a href="{{ path('new_tcompany') }}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+

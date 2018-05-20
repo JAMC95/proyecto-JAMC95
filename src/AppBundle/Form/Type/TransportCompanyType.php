@@ -4,13 +4,16 @@
 namespace AppBundle\Form\Type;
 
 
+use AppBundle\Entity\Camion;
 use AppBundle\Entity\Empresa;
+use AppBundle\Entity\Obra;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
-class ClientType extends AbstractType
+class TransportCompanyType extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -26,6 +29,21 @@ class ClientType extends AbstractType
             ])
             ->add('telefono', null, [
                 'label' => 'Teléfono '
+            ])
+            ->add('obras',  EntityType::class, [
+                'class' => Obra::class,
+                'label' => 'Obras',
+                'expanded' => false,
+                'multiple' => true,
+                'required' => true
+            ])
+            ->add('camionHabitual', EntityType::class, [
+                'class' => Camion::class,
+                'label' => 'Camión habitual',
+                'expanded' => false,
+                'multiple' => false,
+                'required' => false,
+                'attr' => ['data-select' => 'true']
             ]);
 
 
