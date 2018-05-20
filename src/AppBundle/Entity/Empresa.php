@@ -56,10 +56,10 @@ class Empresa
     private $esempresadetransporte;
     /**
      * var Camion
-     * @ORM\ManyToOne(targetEntity="Camion", inversedBy="camionHabitual")
+     * @ORM\OneToOne(targetEntity="Camion", inversedBy="empresaTransportes")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $camioneroHabitual;
+    private $camionHabitual;
 
     /**
      * var Obras[]
@@ -208,13 +208,13 @@ class Empresa
     /**
      * Set camioneroHabitual
      *
-     * @param \AppBundle\Entity\Camion $camioneroHabitual
+     * @param \AppBundle\Entity\Camion $camionHabitual
      *
      * @return Empresa
      */
-    public function setCamioneroHabitual(\AppBundle\Entity\Camion $camioneroHabitual)
+    public function setCamionHabitual(\AppBundle\Entity\Camion $camionHabitual)
     {
-        $this->camioneroHabitual = $camioneroHabitual;
+        $this->camionHabitual = $camionHabitual;
 
         return $this;
     }
@@ -224,9 +224,9 @@ class Empresa
      *
      * @return \AppBundle\Entity\Camion
      */
-    public function getCamioneroHabitual()
+    public function getCamionHabitual()
     {
-        return $this->camioneroHabitual;
+        return $this->camionHabitual;
     }
 
     /**

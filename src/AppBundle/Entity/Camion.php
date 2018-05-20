@@ -42,26 +42,19 @@ class Camion
     private $tara;
     /**
      * var Camionero
-     * @ORM\OneToMany(targetEntity="Camionero", mappedBy="camioneroHabitual")
+     * @ORM\OneToOne(targetEntity="Camionero", inversedBy="camionHabitual")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $camionHabitual;
+    private $camioneroHabitual;
 
     /**
      * var Empresa
-     * @ORM\ManyToOne(targetEntity="Empresa", inversedBy="camiones")
+     * @ORM\OneToOne(targetEntity="Empresa", mappedBy="camionHabitual")
      * @ORM\JoinColumn(nullable=false)
      */
     private $empresaTransportes;
 
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->camionHabitual = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Get id
@@ -201,5 +194,29 @@ class Camion
     public function getEmpresaTransportes()
     {
         return $this->empresaTransportes;
+    }
+
+    /**
+     * Set camioneroHabitual
+     *
+     * @param \AppBundle\Entity\Camionero $camioneroHabitual
+     *
+     * @return Camion
+     */
+    public function setCamioneroHabitual(\AppBundle\Entity\Camionero $camioneroHabitual = null)
+    {
+        $this->camioneroHabitual = $camioneroHabitual;
+
+        return $this;
+    }
+
+    /**
+     * Get camioneroHabitual
+     *
+     * @return \AppBundle\Entity\Camionero
+     */
+    public function getCamioneroHabitual()
+    {
+        return $this->camioneroHabitual;
     }
 }

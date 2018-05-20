@@ -55,6 +55,12 @@ class Camionero
      */
     private $telefono;
 
+    /**
+     * var Camion
+     * @ORM\OneToOne(targetEntity="Camion", mappedBy="camioneroHabitual")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $camionHabitual;
 
     /**
      * Get id
@@ -184,5 +190,34 @@ class Camionero
     public function getTelefono()
     {
         return $this->telefono;
+    }
+
+    public function __toString()
+    {
+        return $this->nombreCamionero;
+    }
+
+    /**
+     * Set camionHabitual
+     *
+     * @param \AppBundle\Entity\Camion $camionHabitual
+     *
+     * @return Camionero
+     */
+    public function setCamionHabitual(\AppBundle\Entity\Camion $camionHabitual = null)
+    {
+        $this->camionHabitual = $camionHabitual;
+
+        return $this;
+    }
+
+    /**
+     * Get camionHabitual
+     *
+     * @return \AppBundle\Entity\Camion
+     */
+    public function getCamionHabitual()
+    {
+        return $this->camionHabitual;
     }
 }
