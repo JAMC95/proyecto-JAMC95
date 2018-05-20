@@ -3,65 +3,65 @@
 namespace AppBundle\Controller;
 
 
-use AppBundle\Form\Type\ObraType;
+use AppBundle\Entity\Material;
+use AppBundle\Form\Type\MaterialType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use AppBundle\Entity\Obra;
 
-class ObrasController extends Controller
+class MaterialController extends Controller
 {
     /**
-     * @Route("/works", name="works")
+     * @Route("/material", name="materials")
      */
-    public function showWorks(Request $request)
+    public function showMaterial(Request $request)
     {
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->getRepository('AppBundle:Obra')->findAll();
+        $query = $em->getRepository('AppBundle:Material')->findAll();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
             5
         );
-        return $this->render('works/index.html.twig', array(
+        return $this->render('material/index.html.twig', array(
             'pagination' => $pagination
 
         ));
     }
 
     /**
-     * @Route(path="/worksnew/", name="new_works")
-     * @Route(path="/worksEdit/{works}", name="edit_works")
+     * @Route(path="/materialNew/", name="new_material")
+     * @Route(path="/materialEdit/{material}", name="edit_material")
      * */
-    public function worksAlter(Request $request, Obra $works = null)
+    public function materialAlter(Request $request, Material $material = null)
     {
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
-        if(null === $works) {
-            $works = new Obra();
-            $em->persist($works);
+        if(null === $material) {
+            $material = new Material();
+            $em->persist($material);
 
         }
 
-        $form = $this->createForm(ObraType::class, $works);
+        $form = $this->createForm(MaterialType::class, $material);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $em->flush();
-                return $this->redirectToRoute('works');
+                return $this->redirectToRoute('materials');
             }
             catch (\Exception $e) {
                 $this->addFlash('error', 'No se han podido guardar los cambios');
             }
         }
-        return $this->render('works/form.html.twig', [
+        return $this->render('material/form.html.twig', [
             'formulario' => $form->createView(),
-            'works' => $works
+            'material' => $material
         ]);
     }
 
