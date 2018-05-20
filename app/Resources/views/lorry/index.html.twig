@@ -1,0 +1,81 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <h1>Camiones</h1>
+
+        {# total items count #}
+        <div class="count">
+        <span class="label label-primary">
+            Entradas en total: {{ pagination.getTotalItemCount }}
+        </span>
+        </div>
+        <br/>
+        <table class="table table-bordered">
+            <tr>
+                {# sorting of properties based on query components #}
+
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Matricula', 'e.matricula') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Matricula del remolque', 'e.matriculaRemolque') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Marca', 'e.marca') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Modelo', 'e.modelo') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Tara', 'e.tara') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Camionero habitual', 'e.camioneroHabitual') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Empresa de transportes', 'e.empresaTransportes') }}
+                </th>
+                <th>Acción</th>
+
+            </tr>
+
+            {# table body #}
+            {% for entry in pagination %}
+
+                <tr {% if loop.index is odd %}class="color"{% endif %}>
+
+                    <td>{{ entry.matricula }}</td>
+                    <td>{{ entry.matriculaRemolque }}</td>
+                    <td>{{ entry.marca }}</td>
+                    <td>{{ entry.modelo }}</td>
+                    <td>{{ entry.tara }}</td>
+                    <td>{{ entry.camioneroHabitual }}</td>
+                    <td>{{ entry.empresaTransportes }}</td>
+                    <td> <a class="btn btn-info" href="{{ path('edit_lorry', {'lorry': entry.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a></td>
+
+                </tr>
+
+            {% endfor %}
+        </table>
+        {# display navigation #}
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+        <a href="{{ path('homepage') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Atrás</a>
+        <a href="{{ path('new_lorry') }}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+

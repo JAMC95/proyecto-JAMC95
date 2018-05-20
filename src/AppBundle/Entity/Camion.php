@@ -26,6 +26,18 @@ class Camion
      * @ORM\Column(name="matrícula", type="string", length=7, nullable=false)
      */
     private $matricula;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marca", type="string", length=17, nullable=false)
+     */
+    private $marca;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="modelo", type="string", length=17, nullable=false)
+     */
+    private $modelo;
 
     /**
      * @var string
@@ -139,37 +151,27 @@ class Camion
     }
 
     /**
-     * Add camionHabitual
+     * Set camioneroHabitual
      *
-     * @param \AppBundle\Entity\Camionero $camionHabitual
+     * @param \AppBundle\Entity\Camionero $camioneroHabitual
      *
      * @return Camion
      */
-    public function addCamionHabitual(\AppBundle\Entity\Camionero $camionHabitual)
+    public function setCamioneroHabitual(\AppBundle\Entity\Camionero $camioneroHabitual = null)
     {
-        $this->camionHabitual[] = $camionHabitual;
+        $this->camioneroHabitual = $camioneroHabitual;
 
         return $this;
     }
 
     /**
-     * Remove camionHabitual
+     * Get string
      *
-     * @param \AppBundle\Entity\Camionero $camionHabitual
+     * @return string
      */
-    public function removeCamionHabitual(\AppBundle\Entity\Camionero $camionHabitual)
+    public function getCamioneroHabitual()
     {
-        $this->camionHabitual->removeElement($camionHabitual);
-    }
-
-    /**
-     * Get camionHabitual
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCamionHabitual()
-    {
-        return $this->camionHabitual;
+        return $this->camioneroHabitual;
     }
 
     /**
@@ -187,36 +189,65 @@ class Camion
     }
 
     /**
-     * Get empresaTransportes
+     * Get string
      *
-     * @return \AppBundle\Entity\Empresa
+     * @return string
      */
     public function getEmpresaTransportes()
     {
         return $this->empresaTransportes;
     }
 
+    public function __toString()
+    {
+        return $this->matricula;
+    }
+
     /**
-     * Set camioneroHabitual
+     * Set marca
      *
-     * @param \AppBundle\Entity\Camionero $camioneroHabitual
+     * @param string $marca
      *
      * @return Camion
      */
-    public function setCamioneroHabitual(\AppBundle\Entity\Camionero $camioneroHabitual = null)
+    public function setMarca($marca)
     {
-        $this->camioneroHabitual = $camioneroHabitual;
+        $this->marca = $marca;
 
         return $this;
     }
 
     /**
-     * Get camioneroHabitual
+     * Get marca
      *
-     * @return \AppBundle\Entity\Camionero
+     * @return string
      */
-    public function getCamioneroHabitual()
+    public function getMarca()
     {
-        return $this->camioneroHabitual;
+        return $this->marca;
+    }
+
+    /**
+     * Set modelo
+     *
+     * @param string $modelo
+     *
+     * @return Camion
+     */
+    public function setModelo($modelo)
+    {
+        $this->modelo = $modelo;
+
+        return $this;
+    }
+
+    /**
+     * Get modelo
+     *
+     * @return string
+     */
+    public function getModelo()
+    {
+        return $this->modelo;
     }
 }

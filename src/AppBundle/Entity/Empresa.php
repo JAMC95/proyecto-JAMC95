@@ -67,6 +67,7 @@ class Empresa
      * @ORM\JoinColumn(nullable=true)
      */
     private $obras;
+
     /**
      * Constructor
      */
@@ -112,7 +113,7 @@ class Empresa
     /**
      * Set nombreEmpresa
      *
-     * @param integer $nombreEmpresa
+     * @param string $nombreEmpresa
      *
      * @return Empresa
      */
@@ -126,7 +127,7 @@ class Empresa
     /**
      * Get nombreEmpresa
      *
-     * @return integer
+     * @return string
      */
     public function getNombreEmpresa()
     {
@@ -134,7 +135,7 @@ class Empresa
     }
 
     /**
-     * Set dirección
+     * Set direccion
      *
      * @param string $direccion
      *
@@ -148,7 +149,7 @@ class Empresa
     }
 
     /**
-     * Get dirección
+     * Get direccion
      *
      * @return string
      */
@@ -158,7 +159,7 @@ class Empresa
     }
 
     /**
-     * Set teléfono
+     * Set telefono
      *
      * @param integer $telefono
      *
@@ -172,7 +173,7 @@ class Empresa
     }
 
     /**
-     * Get teléfono
+     * Get telefono
      *
      * @return integer
      */
@@ -206,13 +207,13 @@ class Empresa
     }
 
     /**
-     * Set camioneroHabitual
+     * Set camionHabitual
      *
      * @param \AppBundle\Entity\Camion $camionHabitual
      *
      * @return Empresa
      */
-    public function setCamionHabitual(\AppBundle\Entity\Camion $camionHabitual)
+    public function setCamionHabitual(\AppBundle\Entity\Camion $camionHabitual = null)
     {
         $this->camionHabitual = $camionHabitual;
 
@@ -220,7 +221,7 @@ class Empresa
     }
 
     /**
-     * Get camioneroHabitual
+     * Get camionHabitual
      *
      * @return \AppBundle\Entity\Camion
      */
@@ -262,4 +263,11 @@ class Empresa
     {
         return $this->obras;
     }
+
+    public function __toString()
+    {
+       return $this->nombreEmpresa;
+    }
+
+
 }
