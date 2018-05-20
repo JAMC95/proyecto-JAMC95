@@ -3,16 +3,12 @@
 namespace AppBundle\Controller;
 
 
-use AppBundle\Entity\Camion;
 use AppBundle\Entity\Empresa;
-use AppBundle\Form\Type\CamioneroType;
 use AppBundle\Form\Type\ClientType;
 use Doctrine\ORM\EntityManager;
-use Symfony\Bundle\FrameworkBundle\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use AppBundle\Entity\Camionero;
 
 class ClientController extends Controller
 {

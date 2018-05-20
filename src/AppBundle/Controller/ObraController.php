@@ -3,65 +3,65 @@
 namespace AppBundle\Controller;
 
 
-use AppBundle\Entity\Camionero;
-use AppBundle\Form\Type\CamioneroType;
+use AppBundle\Entity\Obra;
+use AppBundle\Form\Type\ObraType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CamioneroController extends Controller
+class ObraController extends Controller
 {
     /**
-     * @Route("/lorry_driver", name="lorry_driver")
+     * @Route("/works", name="works")
      */
-    public function showLorryDrivers(Request $request)
+    public function showWorks(Request $request)
     {
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->getRepository('AppBundle:Camionero')->findAll();
+        $query = $em->getRepository('AppBundle:Obra')->findAll();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
             $request->query->getInt('page', 1),
             5
         );
-        return $this->render('lorry_driver/index.html.twig', array(
+        return $this->render('works/index.html.twig', array(
             'pagination' => $pagination
 
         ));
     }
 
     /**
-     * @Route(path="/ldrivernew/", name="new_lorryDriver")
-     * @Route(path="/ldriveredit/{lorryDriver}", name="edit_lorryDriver")
+     * @Route(path="/worksnew/", name="new_works")
+     * @Route(path="/worksEdit/{works}", name="edit_works")
      * */
-    public function lorryDriverAlter(Request $request, Camionero $lorryDriver = null)
+    public function worksAlter(Request $request, Obra $works = null)
     {
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
-        if(null === $lorryDriver) {
-            $lorryDriver = new Camionero();
-            $em->persist($lorryDriver);
+        if(null === $works) {
+            $works = new Obra();
+            $em->persist($works);
 
         }
 
-        $form = $this->createForm(camioneroType::class, $lorryDriver);
+        $form = $this->createForm(ObraType::class, $works);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $em->flush();
-                return $this->redirectToRoute('lorry_drivers');
+                return $this->redirectToRoute('works');
             }
             catch (\Exception $e) {
                 $this->addFlash('error', 'No se han podido guardar los cambios');
             }
         }
-        return $this->render('lorry_driver/form.html.twig', [
+        return $this->render('works/form.html.twig', [
             'formulario' => $form->createView(),
-            'lorryDriver' => $lorryDriver
+            'works' => $works
         ]);
     }
 
