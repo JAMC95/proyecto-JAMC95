@@ -40,7 +40,7 @@ class ClientController extends Controller
      * @Route(path="/client_new/", name="new_client")
      * @Route(path="/client_edit/{client}", name="edit_client")
      * */
-    public function lorryDAlter(Request $request, Empresa $client = null)
+    public function clientAlter(Request $request, Empresa $client = null)
     {
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
