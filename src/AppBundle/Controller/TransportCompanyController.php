@@ -32,10 +32,14 @@ class TransportCompanyController extends Controller
 
     /**
      * @Route(path="/tcompany_new/", name="new_tcompany")
-     * @Route(path="/tcompany_edit/{tcompany}", name="edit_tcompany")
+     * @Route(path="/transportCompany_edit/{tcompany}", name="edit_transportCompany")
      * */
     public function tCompanyAlter(Request $request, Empresa $tcompnay = null)
     {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+
+        $tcompnay = $em->getRepository('AppBundle:Empresa')->findOneBy(['id' => $request->attributes->get('tcompany')]);
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
         if(null === $tcompnay) {
@@ -44,7 +48,7 @@ class TransportCompanyController extends Controller
             $tcompnay->setEsempresadetransporte(true);
 
         }
-            dump($tcompnay);
+
         $form = $this->createForm(TransportCompanyType::class, $tcompnay);
 
         $form->handleRequest($request);
