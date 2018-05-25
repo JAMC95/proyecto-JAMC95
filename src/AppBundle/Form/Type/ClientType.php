@@ -8,6 +8,10 @@ use AppBundle\Entity\Empresa;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use AppBundle\Entity\Obra;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+
 
 
 class ClientType extends AbstractType
@@ -26,7 +30,14 @@ class ClientType extends AbstractType
             ])
             ->add('telefono', null, [
                 'label' => 'Teléfono '
-            ]);
+            ])
+            ->add('obras',  EntityType::class, [
+                'class' => Obra::class,
+                'label' => 'Obras',
+                'expanded' => false,
+                'multiple' => true,
+                'required' => false
+            ]);;
 
 
 
