@@ -16,7 +16,6 @@ class SecurityController extends Controller
     {
         // get the login error if there is one
         $error = $authUtils->getLastAuthenticationError();
-        dump($authUtils);
         // last username entered by the user
         $lastUsername = $authUtils->getLastUsername();
         return $this->render('security/login.html.twig', array(
