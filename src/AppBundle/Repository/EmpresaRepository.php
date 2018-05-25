@@ -32,4 +32,9 @@ class EmpresaRepository extends EntityRepository
             ->where('c.esempresadetransporte = true');
         return $companies;
     }
+    public function findAlltClientsType() {
+        $companies = $this->createQueryBuilder('c')
+            ->where('c.esempresadetransporte = false');
+        return $companies;
+    }
 }
