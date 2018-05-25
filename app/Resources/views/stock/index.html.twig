@@ -1,0 +1,23 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block content %}
+    <div class="container-fluid">
+        <h1>{{ tipo.tipo }}</h1>
+        <div class="form-group">
+            {{ form_start(formulario) }}
+            <div class="col-sm-12">
+
+                {{ form_widget(formulario) }}
+            </div>
+            <div class="col-sm-10">
+                <br/>
+                <a href="{{ path('homepage') }}" class="btn btn-info"><i class="fa fa-backward"></i> Volver</a>
+                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar cambios</button>
+
+            </div>
+        </div>
+    </div>
+    {{ form_end(formulario) }}
+{% endblock %}
