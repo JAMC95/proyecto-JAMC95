@@ -33,6 +33,36 @@ class TicketController extends Controller
         ));
     }
 
+    /**
+     * @Route(path="/ticketNew/", name="new_ticket")
+     * @Route(path="/ticketEdit/{ticket}", name="edit_ticket")
+     * */
+    public function materialAlter(Request $request, Ticket $ticket = null)
+    {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+        if(null === $ticket) {
+            $ticket = new Ticket();
+            $em->persist($ticket);
 
+        }
+
+        $form = $this->createForm(TicketType::class, $ticket);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $em->flush();
+                return $this->redirectToRoute('tickets');
+            }
+            catch (\Exception $e) {
+                $this->addFlash('error', 'No se han podido guardar los cambios');
+            }
+        }
+        return $this->render('ticket/form.html.twig', [
+            'formulario' => $form->createView(),
+            'ticket' => $ticket
+        ]);
+    }
 
 }
