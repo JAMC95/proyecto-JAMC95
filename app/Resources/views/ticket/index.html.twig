@@ -1,0 +1,94 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <h1>Tickets</h1>
+
+        {# total items count #}
+        <div class="count">
+        <span class="label label-primary">
+            Entradas en total: {{ pagination.getTotalItemCount }}
+        </span>
+        </div>
+        <br/>
+        <table class="table table-bordered">
+            <tr>
+                {# sorting of properties based on query components #}
+
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Matrícula', 'e.camion') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Remolque', 'e.matricularemoque') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Camionero', 'e.camionero') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Empresa de transporte', 'e.empresaTransporte') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Cliente', 'e.cliente') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Obra', 'e.obra') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Material', 'e.material') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Tara', 'e.tara') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Bruto', 'e.bruto') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Neto', 'e.neto') }}
+                </th>
+
+                <th>Acción</th>
+
+            </tr>
+
+            {# table body #}
+            {% for entry in pagination %}
+
+                <tr {% if loop.index is odd %}class="color"{% endif %}>
+
+                    <td>{{ entry.camion }}</td>
+                    <td>{{ entry.camion.matricularemolque }}</td>
+                    <td>{{ entry.camionero }}</td>
+                    <td>{{ entry.empresaTransporte }}</td>
+                    <td>{{ entry.cliente }}</td>
+                    <td>{{ entry.obra }}</td>
+                    <td>{{ entry.material.nombre }}</td>
+                    <td>{{ entry.tara }}</td>
+                    <td>{{ entry.bruto }}</td>
+                    <td>{{ entry.bruto - entry.tara }}</td>
+                    <td> <a class="btn btn-info" href="{{ path('edit_ticket', {'ticket': entry.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a></td>
+
+                </tr>
+
+            {% endfor %}
+        </table>
+        {# display navigation #}
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+        <a href="{{ path('homepage') }}" class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Atrás</a>
+        <a href="{{ path('new_material') }}" class="btn btn-success"><i class="fa fa-plus"></i> Nuevo</a>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+
