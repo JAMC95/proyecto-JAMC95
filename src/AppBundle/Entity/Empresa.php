@@ -55,8 +55,8 @@ class Empresa
      */
     private $esempresadetransporte;
     /**
-     * var Camion
-     * @ORM\OneToOne(targetEntity="Camion", inversedBy="empresaTransportes")
+     * var Camion[]
+     * @ORM\OneToMany(targetEntity="Camion", mappedBy="empresaTransportes")
      * @ORM\JoinColumn(nullable=true)
      */
     private $camionHabitual;

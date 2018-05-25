@@ -36,14 +36,6 @@ class TransportCompanyType extends AbstractType
                 'expanded' => false,
                 'multiple' => true,
                 'required' => false
-            ])
-            ->add('camionHabitual', EntityType::class, [
-                'class' => Camion::class,
-                'label' => 'Camión habitual',
-                'expanded' => false,
-                'multiple' => false,
-                'required' => false,
-                'attr' => ['data-select' => 'true']
             ]);
 
 

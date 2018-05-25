@@ -28,9 +28,6 @@
                 <th>
                     {{ knp_pagination_sortable(pagination, 'Teléfono', 'e.telefono') }}
                 </th>
-                <th>
-                    {{ knp_pagination_sortable(pagination, 'Camión habitual', 'e.camionHabitual') }}
-                </th>
                 <th>Acción</th>
 
             </tr>
@@ -44,7 +41,6 @@
                     <td>{{ entry.nif }}</td>
                     <td>{{ entry.direccion }}</td>
                     <td>{{ entry.telefono }}</td>
-                    <td>{{ entry.camionHabitual }}</td>
                     <td> <a class="btn btn-info" href="{{ path('edit_transportCompany', {'tcompany': entry.id}) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a></td>
 
