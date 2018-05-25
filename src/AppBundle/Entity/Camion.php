@@ -42,7 +42,7 @@ class Camion
     /**
      * @var string
      *
-     * @ORM\Column(name="matricula_remolque", type="string", length=8, nullable=false)
+     * @ORM\Column(name="matricula_remolque", type="string", length=8, nullable=true)
      */
     private $matriculaRemolque;
 

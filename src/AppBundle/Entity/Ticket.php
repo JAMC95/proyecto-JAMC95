@@ -35,16 +35,9 @@ class Ticket
     private $bruto;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="neto", type="integer", nullable=false)
-     */
-    private $neto;
-
-    /**
      * @var bool
      *
-     * @ORM\Column(name="tineRecipiente", type="boolean", nullable=true)
+     * @ORM\Column(name="tieneRecipiente", type="boolean", nullable=true)
      */
     private $tieneRecipiente;
 
@@ -61,6 +54,13 @@ class Ticket
      * @ORM\JoinColumn(nullable=false)
      */
     private $camionero;
+
+    /**
+     * var Camion
+     * @ORM\ManyToOne(targetEntity="Camion")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $camion;
 
     /**
      * var Empresa
@@ -156,30 +156,6 @@ class Ticket
     public function getBruto()
     {
         return $this->bruto;
-    }
-
-    /**
-     * Set neto
-     *
-     * @param integer $neto
-     *
-     * @return Ticket
-     */
-    public function setNeto($neto)
-    {
-        $this->neto = $neto;
-
-        return $this;
-    }
-
-    /**
-     * Get neto
-     *
-     * @return integer
-     */
-    public function getNeto()
-    {
-        return $this->neto;
     }
 
     /**
@@ -373,4 +349,23 @@ class Ticket
     {
         return $this->tipoRecipiente;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCamion()
+    {
+        return $this->camion;
+    }
+
+    /**
+     * @param mixed $camion
+     * @return Ticket
+     */
+    public function setCamion($camion)
+    {
+        $this->camion = $camion;
+        return $this;
+    }
+
 }
