@@ -1,0 +1,29 @@
+
+{% extends 'layout.html.twig' %}
+
+
+
+{% block content %}
+    <div class="container-fluid">
+        <h1>Tickets</h1>
+        <div class="form-group">
+            {{ form_start(formulario) }}
+            <div class="col-sm-12">
+
+            {{ form_widget(formulario) }}
+            </div>
+            <div class="col-sm-10">
+                <br/>
+                <a href="{{ path('tickets') }}" class="btn btn-info"><i class="fa fa-backward"></i> Volver</a>
+                <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar cambios</button>
+                {% if ticket.id %}
+
+                    <a class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a>
+                {% endif %}
+
+
+            </div>
+        </div>
+    </div>
+    {{ form_end(formulario) }}
+{% endblock %}
