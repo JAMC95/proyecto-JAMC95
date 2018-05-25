@@ -4,10 +4,7 @@
 namespace AppBundle\Form\Type;
 
 
-use AppBundle\Entity\Camion;
 use AppBundle\Entity\Empresa;
-use AppBundle\Entity\Obra;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -29,14 +26,8 @@ class TransportCompanyType extends AbstractType
             ])
             ->add('telefono', null, [
                 'label' => 'Teléfono '
-            ])
-            ->add('obras',  EntityType::class, [
-                'class' => Obra::class,
-                'label' => 'Obras',
-                'expanded' => false,
-                'multiple' => true,
-                'required' => false
             ]);
+
 
 
 
