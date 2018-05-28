@@ -3,10 +3,15 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Camion;
+use AppBundle\Entity\Camionero;
 use AppBundle\Entity\Ticket;
 use AppBundle\Form\Type\TicketType;
 use Doctrine\ORM\EntityManager;
+use http\Env\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -36,7 +41,7 @@ class TicketController extends Controller
     /**
      * @Route(path="/ticketNew/", name="new_ticket")
      * @Route(path="/ticketEdit/{ticket}", name="edit_ticket")
-     * */
+      */
     public function materialAlter(Request $request, Ticket $ticket = null)
     {
         /** @var EntityManager $em */
@@ -63,6 +68,19 @@ class TicketController extends Controller
             'formulario' => $form->createView(),
             'ticket' => $ticket
         ]);
+    }
+
+    /**
+     * @Route(path="/camion_ticket/{camion}", name="info_camion")
+     */
+    public function getIdAsociadas(Request $request, Camion $camion = null)
+    {
+       $info = [];
+       $info["camionero"] = $camion->getCamioneroHabitual()->getId();
+       $info["empresaTransportes"] = $camion->getEmpresaTransportes()->getId();
+
+       return new JsonResponse($info);
+
     }
 
 }

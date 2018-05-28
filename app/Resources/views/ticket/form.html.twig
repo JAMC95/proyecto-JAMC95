@@ -27,3 +27,26 @@
     </div>
     {{ form_end(formulario) }}
 {% endblock %}
+
+{% block javascripts %}
+    <script>
+        var camion = $('#ticket_camion');
+        var camionero = $('#ticket_camionero');
+        var empresaTransporte = $('#ticket_empresaTransporte');
+        camion.change(function () {
+            $.ajax({
+                url: '/camion_ticket/' + camion.val() ,
+                type: 'GET',
+
+                success: function(html) {
+                    camionero.val(html['camionero']);
+                    empresaTransporte.val(html['empresaTransportes']);
+                    location.reload()
+                },
+                error: function() {
+                }
+            });
+
+        });
+    </script>
+{% endblock %}

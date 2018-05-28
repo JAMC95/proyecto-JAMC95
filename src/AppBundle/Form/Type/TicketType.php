@@ -59,17 +59,17 @@ class TicketType extends AbstractType
                     return  $repository->findAlltClientsType();
                 }
             ])
-            ->add('material', EntityType::class, [
-                'class' => Material::class,
-                'label' => 'Material',
+            ->add('obra', EntityType::class, [
+                'class' => Obra::class,
+                'label' => 'Obra',
                 'expanded' => false,
                 'multiple' => false,
                 'required' => false,
                 'attr' => ['data-select' => 'true']
             ])
-            ->add('obra', EntityType::class, [
-                'class' => Obra::class,
-                'label' => 'Obra',
+            ->add('material', EntityType::class, [
+                'class' => Material::class,
+                'label' => 'Material',
                 'expanded' => false,
                 'multiple' => false,
                 'required' => false,
