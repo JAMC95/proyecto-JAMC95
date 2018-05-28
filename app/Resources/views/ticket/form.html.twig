@@ -33,6 +33,8 @@
         var camion = $('#ticket_camion');
         var camionero = $('#ticket_camionero');
         var empresaTransporte = $('#ticket_empresaTransporte');
+        var cliente = $('#ticket_cliente');
+        var obra = $('#ticket_obra');
         camion.change(function () {
             $.ajax({
                 url: '/camion_ticket/' + camion.val() ,
@@ -41,6 +43,22 @@
                 success: function(html) {
                     camionero.val(html['camionero']);
                     empresaTransporte.val(html['empresaTransportes']);
+                    location.reload()
+                },
+                error: function() {
+                }
+            });
+
+        });
+
+        cliente.change(function () {
+            $.ajax({
+                url: '/cliente_ticket/' + cliente.val() ,
+                type: 'GET',
+
+                success: function(html) {
+                    console.log(html);
+                    obra.val(html['obraPrincipal']);
                     location.reload()
                 },
                 error: function() {

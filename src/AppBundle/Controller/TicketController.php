@@ -5,6 +5,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Camion;
 use AppBundle\Entity\Camionero;
+use AppBundle\Entity\Empresa;
+use AppBundle\Entity\Obra;
 use AppBundle\Entity\Ticket;
 use AppBundle\Form\Type\TicketType;
 use Doctrine\ORM\EntityManager;
@@ -73,13 +75,26 @@ class TicketController extends Controller
     /**
      * @Route(path="/camion_ticket/{camion}", name="info_camion")
      */
-    public function getIdAsociadas(Request $request, Camion $camion = null)
+    public function getIdAsociadasCamion(Request $request, Camion $camion = null)
     {
        $info = [];
        $info["camionero"] = $camion->getCamioneroHabitual()->getId();
        $info["empresaTransportes"] = $camion->getEmpresaTransportes()->getId();
 
        return new JsonResponse($info);
+
+    }
+
+    /**
+     * @Route(path="/cliente_ticket/{cliente}", name="info_cliente")
+     */
+    public function getIdAsociadasCliente(Request $request, Empresa $cliente = null)
+    {
+        $info = [];
+        $info["obraPrincipal"] = $cliente->getObras()[0]->getId();
+
+
+        return new JsonResponse($info);
 
     }
 
