@@ -43,7 +43,8 @@
                 success: function(html) {
                     camionero.val(html['camionero']);
                     empresaTransporte.val(html['empresaTransportes']);
-                    location.reload()
+                    camionero.trigger( "change" );
+                    empresaTransporte.trigger( "change" );
                 },
                 error: function() {
                 }
@@ -57,14 +58,16 @@
                 type: 'GET',
 
                 success: function(html) {
-                    console.log(html);
                     obra.val(html['obraPrincipal']);
-                    location.reload()
+                    obra.trigger( "change" );
+
                 },
                 error: function() {
                 }
             });
 
         });
+
+
     </script>
 {% endblock %}
