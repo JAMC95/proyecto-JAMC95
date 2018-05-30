@@ -9,6 +9,7 @@ use AppBundle\Entity\Camionero;
 use AppBundle\Entity\Empresa;
 use AppBundle\Entity\Material;
 use AppBundle\Entity\Obra;
+use AppBundle\Entity\Recipiente;
 use AppBundle\Entity\Ticket;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -80,6 +81,17 @@ class TicketType extends AbstractType
             ])
             ->add('tara', null, [
                 'label' => 'Tara '
+            ])
+            ->add('tieneRecipiente', null, [
+                'label' => '¿Es recipiente?'
+            ])
+            ->add('tipoRecipiente', EntityType::class, [
+                'class' => Recipiente::class,
+                'label' => 'Recipiente',
+                'expanded' => false,
+                'multiple' => false,
+                'required' => false,
+                'attr' => ['data-select' => 'true']
             ])
             ;
 

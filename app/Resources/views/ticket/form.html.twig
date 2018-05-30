@@ -35,6 +35,28 @@
         var empresaTransporte = $('#ticket_empresaTransporte');
         var cliente = $('#ticket_cliente');
         var obra = $('#ticket_obra');
+        var esRecipiente = $('#ticket_tieneRecipiente');
+        var tipoRecipiente = $('#ticket_tipoRecipiente');
+        $( document ).ready(function () {
+            if(esRecipiente.is(':checked')) {
+                tipoRecipiente.show();
+                tipoRecipiente.parent().show();
+            } else  {
+                tipoRecipiente.hide();
+                tipoRecipiente.parent().hide();
+            }
+            esRecipiente.click(function () {
+                if(esRecipiente.is(':checked')) {
+                    tipoRecipiente.show();
+                    tipoRecipiente.parent().show();
+                } else  {
+                    tipoRecipiente.hide();
+                    tipoRecipiente.parent().hide();
+                }
+            });
+        });
+
+
         camion.change(function () {
             $.ajax({
                 url: '/camion_ticket/' + camion.val() ,
