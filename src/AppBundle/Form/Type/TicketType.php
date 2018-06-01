@@ -93,6 +93,9 @@ class TicketType extends AbstractType
                 'required' => false,
                 'attr' => ['data-select' => 'true']
             ])
+            ->add('cantidadRecipiente', null, [
+                'label' => 'Cantidad'
+            ]);
             ;
 
 
