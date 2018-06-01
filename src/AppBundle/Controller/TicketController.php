@@ -11,6 +11,7 @@ use AppBundle\Entity\Ticket;
 use AppBundle\Form\Type\TicketType;
 use Doctrine\ORM\EntityManager;
 use http\Env\Response;
+use Sasedev\MpdfBundle\Service\MpdfService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -95,6 +96,18 @@ class TicketController extends Controller
 
 
         return new JsonResponse($info);
+
+    }
+
+    /**
+     * @Route(path="/printTicket/{ticket}", name="print_ticket")
+     */
+    public function printTicket(MpdfService $mpdf, Ticket $ticket)
+    {
+
+
+
+        return $mpdf->generateInlineFileResponse('informe.pdf');
 
     }
 
