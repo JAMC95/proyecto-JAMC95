@@ -10,8 +10,8 @@ use AppBundle\Entity\Obra;
 use AppBundle\Entity\Ticket;
 use AppBundle\Form\Type\TicketType;
 use Doctrine\ORM\EntityManager;
-use http\Env\Response;
-use Sasedev\MpdfBundle\Service\MpdfService;
+use Symfony\Component\HttpFoundation\Response;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -100,15 +100,30 @@ class TicketController extends Controller
     }
 
     /**
-     * @Route(path="/printTicket/{ticket}", name="print_ticket")
+     * @Route("/printTicket/{ticket}", name="ticket_impreso")
      */
-    public function printTicket(MpdfService $mpdf, Ticket $ticket)
+    public function printTicket(Ticket $ticket)
     {
 
 
+        $snappy = $this->get('knp_snappy.pdf');
 
-        return $mpdf->generateInlineFileResponse('informe.pdf');
+        $filename = 'SnappyPDF';
 
+        $url = 'https://cloudways.com';
+
+
+
+
+
+        return new Response($snappy->getOutput($url),200, array(
+
+                'Content-Type'          => 'application/pdf',
+
+                'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
+
+            )
+
+        );
     }
-
 }
