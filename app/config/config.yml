@@ -84,5 +84,8 @@ knp_paginator:
 knp_snappy:
     pdf:
         enabled:    true
-        binary:     %kernel.root_dir%/../wkhtmltox/bin/wkhtmltopdf
-
+        binary:     %kernel.root_dir%/wkhtmltox/bin/wkhtmltopdf
+    image:
+       enabled:    true
+       binary:     %kernel.root_dir%/wkhtmltox/bin/wkhtmltoimage
+       options:    []

@@ -104,19 +104,14 @@ class TicketController extends Controller
      */
     public function printTicket(Ticket $ticket)
     {
-
+        $html = $this->renderView('printer/ticket.html.twig', array());
 
         $snappy = $this->get('knp_snappy.pdf');
 
         $filename = 'SnappyPDF';
 
-        $url = 'https://cloudways.com';
 
-
-
-
-
-        return new Response($snappy->getOutput($url),200, array(
+        return new Response($snappy->getOutputFromHtml($html),200, array(
 
                 'Content-Type'          => 'application/pdf',
 
