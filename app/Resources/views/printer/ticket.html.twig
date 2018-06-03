@@ -1,25 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ticket {{ ticket.id }}</title>
+    <style>
+
+        p:nth-child(2) {
+          margin-left: 10em;
+
+        }
+        p {
+            display: table-cell;
+            width: 30em;
+        }
+    </style>
+</head>
+<body>
 <div>
-    <p>{{ ticket.id }}</p>
-    <p>{{ ticket.fecha | date("H:i - m/d/Y") }}</p>
+    <p>Albarán: {{ ticket.id }}</p>
+    <p>Fecha Albarán: {{ ticket.fecha | date("m/d/Y") }}</p>
 </div>
+<br/>
 <div>
-    <p>{{ ticket.camion.matricula }}</p>
-    <p>{{ ticket.camion.matriculaRemolque }}</p>
+    <p>Matrícula: {{ ticket.camion.matricula }}</p>
+    <p>Remolque: {{ ticket.camion.matriculaRemolque }}</p>
+</div>
+<br/>
+<br/>
+<div>
+    <p>Cliente: {{ ticket.cliente.nombreEmpresa }} <br/> {{ ticket.cliente.nif }}</p>
+    <p>Obra: {{ ticket.obra.nombreObra}} <br/> {{ ticket.obra.direccion }}</p>
+</div>
+<br/>
+<br/>
+<div>
+    <p>Transportista: {{ ticket.empresaTransporte.nombreEmpresa }} <br/> {{ ticket.empresaTransporte.nif }}</p>
+    <p>Operador: {{ ticket.camionero.nombreCamionero }} <br/> {{ ticket.camionero.dni }}</p>
+</div>
+<br/>
+<br/>
+<div>
+    <p>Material cargado: {{ ticket.material }}</p>
+    <p>Peso bruto: {{ ticket.bruto }}</p>
+    <p>Tara: {{ ticket.tara }}</p>
+    <p>Peso neto: {{ ticket.bruto - ticket.tara }}</p>
 </div>
 
-<div>
-    <p>{{ ticket.cliente.nombreEmpresa }}</p>
-    <p>{{ ticket.obra.nombreObra}}</p>
-</div>
+</body>
+</html>
 
-<div>
-    <p>{{ ticket.empresaTransporte.nombreEmpresa }}</p>
-    <p>{{ ticket.camionero.nombreCamionero }}</p>
-</div>
-
-<div>
-    <p>{{ ticket.material }}</p>
-    <p>{{ ticket.bruto }}</p>
-    <p>{{ ticket.tara }}</p>
-    <p>{{ ticket.bruto - ticket.tara }}</p>
-</div>
