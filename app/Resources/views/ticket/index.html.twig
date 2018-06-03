@@ -35,7 +35,7 @@
                     {{ knp_pagination_sortable(pagination, 'Obra', 'e.obra') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Material', 'e.material') }}
+                    {{ knp_pagination_sortable(pagination, 'Fecha', 'e.fecha') }}
                 </th>
                 <th>
                     {{ knp_pagination_sortable(pagination, 'Tara', 'e.tara') }}
@@ -47,7 +47,7 @@
                     {{ knp_pagination_sortable(pagination, 'Neto', 'e.neto') }}
                 </th>
 
-                <th>Acción</th>
+                <th colspan="2">Acción</th>
 
             </tr>
 
@@ -62,7 +62,7 @@
                     <td>{{ entry.empresaTransporte }}</td>
                     <td>{{ entry.cliente }}</td>
                     <td>{{ entry.obra }}</td>
-                    <td>{{ entry.material.nombre }}</td>
+                    <td>{{ entry.fecha | date("H:i - m/d/Y")  }}</td>
                     <td>{{ entry.tara }}</td>
                     <td>{{ entry.bruto }}</td>
                     <td>{{ entry.bruto - entry.tara }}</td>

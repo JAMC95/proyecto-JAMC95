@@ -374,9 +374,9 @@ class Ticket
 
 
     /**
-     * Set fecha
+     * Set date
      *
-     * @param \DateTime $fecha
+     * @param \DateTime $date
      *
      * @return Ticket
      */

@@ -83,7 +83,7 @@ class TicketType extends AbstractType
                 'label' => 'Tara '
             ])
             ->add('tieneRecipiente', null, [
-                'label' => '¿Es recipiente?'
+                'label' => '¿Tiene recipiente?'
             ])
             ->add('tipoRecipiente', EntityType::class, [
                 'class' => Recipiente::class,

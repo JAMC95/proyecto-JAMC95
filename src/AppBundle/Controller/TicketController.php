@@ -17,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class TicketController extends Controller
 {
@@ -52,7 +53,7 @@ class TicketController extends Controller
         if(null === $ticket) {
             $ticket = new Ticket();
             $em->persist($ticket);
-
+            $ticket->setFecha(date_create(date('Y-m-d H:m:s')));
         }
 
         $form = $this->createForm(TicketType::class, $ticket);
@@ -60,6 +61,7 @@ class TicketController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             try {
+
                 $em->flush();
                 return $this->redirectToRoute('tickets');
             }
