@@ -270,4 +270,28 @@ class Empresa
     }
 
 
+
+    /**
+     * Add camionHabitual
+     *
+     * @param \AppBundle\Entity\Camion $camionHabitual
+     *
+     * @return Empresa
+     */
+    public function addCamionHabitual(\AppBundle\Entity\Camion $camionHabitual)
+    {
+        $this->camionHabitual[] = $camionHabitual;
+
+        return $this;
+    }
+
+    /**
+     * Remove camionHabitual
+     *
+     * @param \AppBundle\Entity\Camion $camionHabitual
+     */
+    public function removeCamionHabitual(\AppBundle\Entity\Camion $camionHabitual)
+    {
+        $this->camionHabitual->removeElement($camionHabitual);
+    }
 }

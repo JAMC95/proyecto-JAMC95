@@ -49,6 +49,13 @@ class Ticket
     private $cantidadRecipiente;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha", type="datetime", nullable=false)
+     */
+    private $fecha;
+
+    /**
      * var Camionero
      * @ORM\ManyToOne(targetEntity="Camionero")
      * @ORM\JoinColumn(nullable=false)
@@ -96,9 +103,6 @@ class Ticket
      * @ORM\JoinColumn(nullable=true)
      */
     private $tipoRecipiente;
-
-
-
 
     /**
      * Get id
@@ -368,4 +372,28 @@ class Ticket
         return $this;
     }
 
+
+    /**
+     * Set fecha
+     *
+     * @param \DateTime $fecha
+     *
+     * @return Ticket
+     */
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    /**
+     * Get fecha
+     *
+     * @return \DateTime
+     */
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
 }
