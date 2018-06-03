@@ -106,11 +106,13 @@ class TicketController extends Controller
      */
     public function printTicket(Ticket $ticket)
     {
-        $html = $this->renderView('printer/ticket.html.twig', array());
+        $html = $this->renderView('printer/ticket.html.twig', array(
+            'ticket' => $ticket
+        ));
 
         $snappy = $this->get('knp_snappy.pdf');
 
-        $filename = 'SnappyPDF';
+        $filename = 'ticket' . $ticket->getId();
 
 
         return new Response($snappy->getOutputFromHtml($html),200, array(

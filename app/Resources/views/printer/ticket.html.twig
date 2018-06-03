@@ -1,4 +1,25 @@
-<h1>Prueba</h1>
-<h2>Pueba</h2>
-<p>PDF generated using KnpSnappyBundle in my Symfony 3 project.</p>
-<img height="200" src="https://www.cloudways.com/assets/img//mediaKit/cw-logo.png"/>
+<div>
+    <p>{{ ticket.id }}</p>
+    <p>{{ ticket.fecha | date("H:i - m/d/Y") }}</p>
+</div>
+<div>
+    <p>{{ ticket.camion.matricula }}</p>
+    <p>{{ ticket.camion.matriculaRemolque }}</p>
+</div>
+
+<div>
+    <p>{{ ticket.cliente.nombreEmpresa }}</p>
+    <p>{{ ticket.obra.nombreObra}}</p>
+</div>
+
+<div>
+    <p>{{ ticket.empresaTransporte.nombreEmpresa }}</p>
+    <p>{{ ticket.camionero.nombreCamionero }}</p>
+</div>
+
+<div>
+    <p>{{ ticket.material }}</p>
+    <p>{{ ticket.bruto }}</p>
+    <p>{{ ticket.tara }}</p>
+    <p>{{ ticket.bruto - ticket.tara }}</p>
+</div>

@@ -355,7 +355,9 @@ class Ticket
     }
 
     /**
-     * @return mixed
+     * Get camion
+     *
+     * @return \AppBundle\Entity\Camion
      */
     public function getCamion()
     {
