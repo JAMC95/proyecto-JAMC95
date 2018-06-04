@@ -20,6 +20,8 @@ class ClientController extends Controller
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
         $query = $this->getDoctrine()->getRepository('AppBundle:Empresa')->findAllClientes();
+        $query = $em->createQuery($query);
+
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
@@ -53,7 +55,7 @@ class ClientController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $em->flush();
-                return $this->redirectToRoute('clients');
+                return $this->redirectToRoute('client');
             }
             catch (\Exception $e) {
                 $this->addFlash('error', 'No se han podido guardar los cambios');

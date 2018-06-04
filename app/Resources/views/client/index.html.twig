@@ -12,23 +12,28 @@
         </span>
         </div>
         <br/>
+        {{ knp_pagination_filter(pagination, {'c.nombreEmpresa': 'Nombre',
+            'c.nif': 'NIF'}) }}
+        <br/>
+
         <table class="table table-bordered">
             <tr>
                 {# sorting of properties based on query components #}
 
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Nombre', 'e.nombreempresa') }}
+                    {{ knp_pagination_sortable(pagination, 'Nombre', 'c.nombreEmpresa') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'NIF', 'e.nif') }}
+                    {{ knp_pagination_sortable(pagination, 'NIF', 'c.nif') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Direccion', 'e.direccion') }}
+                    {{ knp_pagination_sortable(pagination, 'Direccion', 'c.direccion') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Teléfono', 'e.telefono') }}
+                    {{ knp_pagination_sortable(pagination, 'Teléfono', 'c.telefono') }}
                 </th>
                 <th>Acción</th>
+
 
             </tr>
 
@@ -64,6 +69,11 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script>
+        $(function () {
+            $("button:first").html('Buscar')
+        });
+    </script>
 
 {% endblock %}
 

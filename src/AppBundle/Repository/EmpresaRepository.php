@@ -10,9 +10,7 @@ class EmpresaRepository extends EntityRepository
     public function findAllClientes() {
         $clientes = $this->createQueryBuilder('c')
             ->select('c')
-            ->where('c.esempresadetransporte = false')
-            ->getQuery()
-            ->getResult();
+            ->where('c.esempresadetransporte = false');
 
         return $clientes;
     }
