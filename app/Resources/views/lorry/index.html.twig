@@ -12,6 +12,9 @@
         </span>
         </div>
         <br/>
+        {{ knp_pagination_filter(pagination, {'e.matricula': 'Matricula',
+            'e.matriculaRemolque': 'Remolque'}) }}
+        <br/>
         <table class="table table-bordered">
             <tr>
                 {# sorting of properties based on query components #}
@@ -32,10 +35,10 @@
                     {{ knp_pagination_sortable(pagination, 'Tara', 'e.tara') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Camionero habitual', 'e.camioneroHabitual') }}
+                    {{ knp_pagination_sortable(pagination, 'Camionero Habitual', 'ch.nombreCamionero') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Empresa de transportes', 'e.empresaTransportes') }}
+                    {{ knp_pagination_sortable(pagination, 'Empresa de transportes', 'em.nombreEmpresa') }}
                 </th>
                 <th>Acción</th>
 

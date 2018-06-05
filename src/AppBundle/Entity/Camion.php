@@ -3,12 +3,13 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\UniqueConstraint;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Camion
- *
- * @ORM\Table(name="Camion")
- * @ORM\Entity
+ * @ORM\Table(name="Camion", uniqueConstraints={@UniqueConstraint(name="uniqueC", columns={"matrícula"})})
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\LorryRepository")
  */
 class Camion
 {
@@ -22,7 +23,12 @@ class Camion
     private $id;
     /**
      * @var string
-     *
+     * @Assert\Length(
+     *      min = 7,
+     *      max = 7,
+     *      minMessage = "La matrícula debe de ser 7",
+     *      maxMessage = "La matricula no puede ser mayor de 7"
+     * )
      * @ORM\Column(name="matrícula", type="string", length=7, nullable=false)
      */
     private $matricula;
@@ -41,8 +47,13 @@ class Camion
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="matricula_remolque", type="string", length=8, nullable=true)
+     * @Assert\Length(
+     *      min = 7,
+     *      max = 8,
+     *      minMessage = "La matrícula del remolque debe de ser mayor a 7",
+     *      maxMessage = "La matricula del remolque no puede ser mayor de 8"
+     * )
+     * @ORM\Column(name="matricula_remolque", type="string",length=8, nullable=true)
      */
     private $matriculaRemolque;
 

@@ -20,7 +20,8 @@ class CamionController extends Controller
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->getRepository('AppBundle:Camion')->findAll();
+        $query = $em->getRepository('AppBundle:Camion')->findAllWithoutExecute();
+        $query = $em->createQuery($query);
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
@@ -52,9 +53,10 @@ class CamionController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $em->flush();
-                return $this->redirectToRoute('lorry');
+                return $this->redirectToRoute('lorries');
             }
             catch (\Exception $e) {
+                dump($e);
                 $this->addFlash('error', 'No se han podido guardar los cambios');
             }
         }

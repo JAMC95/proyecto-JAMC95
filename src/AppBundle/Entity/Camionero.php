@@ -32,7 +32,7 @@ class Camionero
      *
      * @ORM\Column(name="nombre_camionero", type="string", length=70, nullable=false)
      */
-    private $nombreCamionero;
+    public $nombreCamionero;
 
     /**
      * @var string
