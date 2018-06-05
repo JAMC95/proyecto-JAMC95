@@ -83,6 +83,7 @@ class TicketController extends Controller
        $info = [];
        $info["camionero"] = $camion->getCamioneroHabitual()->getId();
        $info["empresaTransportes"] = $camion->getEmpresaTransportes()->getId();
+       $info["tara"] = $camion->getTara();
 
        return new JsonResponse($info);
 

@@ -41,6 +41,8 @@
         var labelTipoRe = $('label[for="ticket_tipoRecipiente"]');
         var cantidadRecipiente = $('#ticket_cantidadRecipiente');
         var labelCantidadRecipiente =  $('label[for="ticket_cantidadRecipiente"]');
+        var tara =  $('#ticket_tara');
+        var bruto =  $('#ticket_bruto');
 
         $( document ).ready(function () {
             if(esRecipiente.is(':checked')) {
@@ -71,9 +73,35 @@
                     tipoRecipiente.next(".select2-container").hide();
                 }
             });
+            cuenta();
         });
 
+        tara.change(function () {
+           cuenta();
+        });
 
+        bruto.change(function () {
+            cuenta();
+        });
+
+        function cuenta() {
+            var total = bruto.val() - tara.val();
+            if(total > 0) {
+                total = 'Neto: ' + total;
+                if($('#neto').length != 0) {
+                    $('#neto').text(total)
+                } else {
+                    var labelNeto = $("<label>").text(total).attr('id',   'neto');
+                    tara.parent().append(labelNeto);
+
+                }
+                if(bruto.val() > 40000) {
+                    $('#neto').css('color', '#e74c3c');
+
+                }
+            }
+
+        }
         camion.change(function () {
             $.ajax({
                 url: '/camion_ticket/' + camion.val() ,
@@ -84,6 +112,7 @@
                     empresaTransporte.val(html['empresaTransportes']);
                     camionero.trigger( "change" );
                     empresaTransporte.trigger( "change" );
+                    tara.val(html['tara'])
                 },
                 error: function() {
                 }
