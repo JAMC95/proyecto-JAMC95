@@ -12,27 +12,36 @@
         </span>
         </div>
         <br/>
+        {{ knp_pagination_filter(pagination, {
+            'c.matricula': 'Matricula',
+            'c.matriculaRemolque': 'Remolque',
+            'cDriver.nombreCamionero': 'Camionero',
+            'em.nombreEmpresa': 'Empresa de Transporte',
+            'cli.nombreEmpresa': 'Cliente',
+            'o.nombreObra': 'Obra',
+        }) }}
+        <br/>
         <table class="table table-bordered">
             <tr>
                 {# sorting of properties based on query components #}
 
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Matrícula', 'e.camion') }}
+                    {{ knp_pagination_sortable(pagination, 'Matrícula', 'c.matricula') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Remolque', 'e.matricularemoque') }}
+                    {{ knp_pagination_sortable(pagination, 'Remolque', 'c.matriculaRemolque') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Camionero', 'e.camionero') }}
+                    {{ knp_pagination_sortable(pagination, 'Camionero', 'cDriver.nombreCamionero') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Empresa de transporte', 'e.empresaTransporte') }}
+                    {{ knp_pagination_sortable(pagination, 'Empresa de transporte', 'em.nombreEmpresa') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Cliente', 'e.cliente') }}
+                    {{ knp_pagination_sortable(pagination, 'Cliente', 'cli.nombreEmpresa') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Obra', 'e.obra') }}
+                    {{ knp_pagination_sortable(pagination, 'Obra', 'o.nombreObra') }}
                 </th>
                 <th>
                     {{ knp_pagination_sortable(pagination, 'Fecha', 'e.fecha') }}
@@ -44,7 +53,7 @@
                     {{ knp_pagination_sortable(pagination, 'Bruto', 'e.bruto') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Neto', 'e.neto') }}
+                    <a href="#">Neto</a>
                 </th>
 
                 <th colspan="2">Acción</th>
@@ -93,6 +102,10 @@
 {% endblock %}
 
 {% block javascripts %}
-
+    <script>
+        $(function () {
+            $("button:first").html('Buscar')
+        });
+    </script>
 {% endblock %}
 

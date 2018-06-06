@@ -19,7 +19,7 @@
                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar cambios</button>
                 {% if ticket.id %}
 
-                    <a class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a>
+                    <a class="btn btn-danger" id="deleteButton"><i class="fa fa-trash"></i> Eliminar</a>
                 {% endif %}
 
 
@@ -136,6 +136,23 @@
 
         });
 
-
+        {% if ticket.id %}
+        $('#deleteButton').click(function () {
+            var d = confirm('¿Seguro que deseas eliminarlo?');
+            if(d) {
+                $.ajax({
+                    url: '{{ path('delete_ticket', {'id' : ticket.id}) }}' ,
+                    type: 'get',
+                    success: function(result) {
+                        location.href = '{{path('tickets')}}';
+                    },
+                    error: function(e){
+                        location.href = '{{path('tickets')}}';
+                    }
+                });
+            }
+        });
+        {% endif %}
     </script>
 {% endblock %}
+

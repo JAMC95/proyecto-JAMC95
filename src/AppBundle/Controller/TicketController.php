@@ -10,6 +10,7 @@ use AppBundle\Entity\Obra;
 use AppBundle\Entity\Ticket;
 use AppBundle\Form\Type\TicketType;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\OptimisticLockException;
 use Symfony\Component\HttpFoundation\Response;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -29,7 +30,7 @@ class TicketController extends Controller
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->getRepository('AppBundle:Ticket')->findAll();
+        $query = $em->getRepository('AppBundle:Ticket')->findAllWithoutExecute();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
@@ -126,4 +127,23 @@ class TicketController extends Controller
 
         );
     }
+
+    /**
+     * @Route(path="/ticket_del/{id}", name="delete_ticket")
+     * */
+    public function deleteLorry($id) {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+        $ticket = $em->getRepository('AppBundle:Ticket')->findOneBy(array('id' => $id));
+        $em->remove($ticket);
+        try {
+            $em->flush();
+        } catch (OptimisticLockException $e) {
+            $this->addFlash('error', 'No se ha podido eliminar');
+            return $e;
+        }
+
+        return 'true';
+    }
+
 }

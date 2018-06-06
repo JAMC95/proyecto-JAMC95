@@ -3,12 +3,13 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ticket
  *
  * @ORM\Table(name="Ticket")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TicketRepository")
  */
 class Ticket
 {
@@ -58,49 +59,55 @@ class Ticket
     /**
      * var Camionero
      * @ORM\ManyToOne(targetEntity="Camionero")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     * @Assert\NotBlank()
      */
     private $camionero;
 
     /**
      * var Camion
      * @ORM\ManyToOne(targetEntity="Camion")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     * @Assert\NotBlank()
      */
     private $camion;
 
     /**
      * var Empresa
      * @ORM\ManyToOne(targetEntity="Empresa")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     * @Assert\NotBlank()
      */
     private $cliente;
 
     /**
      * var Empresa
      * @ORM\ManyToOne(targetEntity="Empresa")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     * @Assert\NotBlank()
      */
     private $empresaTransporte;
 
     /**
      * var Material
      * @ORM\ManyToOne(targetEntity="Material")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     * @Assert\NotBlank()
      */
     private $material;
 
     /**
      * var Obra
      * @ORM\ManyToOne(targetEntity="Obra")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     * @Assert\NotBlank()
      */
     private $obra;
 
     /**
      * var Recipiente
      * @ORM\ManyToOne(targetEntity="Recipiente")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $tipoRecipiente;
 
