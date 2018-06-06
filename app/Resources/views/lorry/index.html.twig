@@ -13,7 +13,8 @@
         </div>
         <br/>
         {{ knp_pagination_filter(pagination, {'e.matricula': 'Matricula',
-            'e.matriculaRemolque': 'Remolque'}) }}
+            'e.matriculaRemolque': 'Remolque',
+        'ch.nombreCamionero': 'Camoinero'}) }}
         <br/>
         <table class="table table-bordered">
             <tr>
@@ -79,6 +80,10 @@
 {% endblock %}
 
 {% block javascripts %}
-
+    <script>
+        $(function () {
+            $("button:first").html('Buscar')
+        });
+    </script>
 {% endblock %}
 
