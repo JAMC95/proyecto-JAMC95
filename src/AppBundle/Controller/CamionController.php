@@ -6,6 +6,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Camion;
 use AppBundle\Form\Type\CamionType;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -65,5 +66,24 @@ class CamionController extends Controller
             'lorry' => $lorry
         ]);
     }
+
+    /**
+     * @Route(path="/lorry_del/{lorryID}", name="delete_lorry")
+     * */
+    public function deleteLorry($lorryID) {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+        $lorry = $em->getRepository('AppBundle:Camion')->findOneBy(array('id' => $lorryID));
+        $em->remove($lorry);
+        try {
+            $em->flush();
+        } catch (OptimisticLockException $e) {
+            $this->addFlash('error', 'No se ha podido eliminar');
+            return $e;
+        }
+
+        return 'true';
+    }
+
 
 }

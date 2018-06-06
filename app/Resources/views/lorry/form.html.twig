@@ -25,7 +25,7 @@
                 <a href="{{ path('lorries') }}" class="btn btn-info"><i class="fa fa-arrow-circle-o-left"></i> Volver</a>
                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar cambios</button>
                 {% if lorry.id %}
-                    <a class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a>
+                    <a class="btn btn-danger" id = "deleteButton"><i class="fa fa-trash"></i> Eliminar</a>
                 {% endif %}
 
 
@@ -33,4 +33,26 @@
         </div>
     </div>
     {{ form_end(formulario) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        {% if lorry.id %}
+        $('#deleteButton').click(function () {
+          var d = confirm('¿Seguro que deseas eliminarlo?');
+            if(d) {
+                $.ajax({
+                    url: '{{ path('delete_lorry', {'lorryID' : lorry.id}) }}' ,
+                    type: 'get',
+                    success: function(result) {
+                     location.href = '{{path('lorries')}}';
+                    },
+                    error: function(e){
+                        location.href = '{{path('lorries')}}';
+                    }
+                });
+            }
+        });
+        {% endif %}
+    </script>
 {% endblock %}
