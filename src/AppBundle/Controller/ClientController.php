@@ -6,6 +6,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Empresa;
 use AppBundle\Form\Type\ClientType;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -67,4 +68,21 @@ class ClientController extends Controller
         ]);
     }
 
+    /**
+     * @Route(path="/client_del/{id}", name="delete_client")
+     * */
+    public function deleteLorryDriver($id) {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+        $lorryDriver = $em->getRepository('AppBundle:Empresa')->findOneBy(array('id' => $id));
+        $em->remove($lorryDriver);
+        try {
+            $em->flush();
+        } catch (OptimisticLockException $e) {
+            $this->addFlash('error', 'No se ha podido eliminar');
+            return $e;
+        }
+
+        return 'true';
+    }
 }
