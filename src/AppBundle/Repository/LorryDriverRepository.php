@@ -8,10 +8,10 @@ use Doctrine\ORM\EntityRepository;
 class LorryDriverRepository extends EntityRepository
 {
     public function findAllWithoutExecute() {
-        $clientes = $this->createQueryBuilder('e')
+        $lorryDriver = $this->createQueryBuilder('e')
             ->select('e');
 
-        return $clientes;
+        return $lorryDriver;
     }
 
 }

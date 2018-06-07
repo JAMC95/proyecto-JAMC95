@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityRepository;
 class TicketRepository extends EntityRepository
 {
     public function findAllWithoutExecute() {
-        $clientes = $this->createQueryBuilder('e')
+            $ticket = $this->createQueryBuilder('e')
             ->select('e')
             ->leftJoin('e.camion', 'c')
             ->leftJoin('e.empresaTransporte', 'em')
@@ -17,7 +17,7 @@ class TicketRepository extends EntityRepository
             ->leftJoin('e.material', 'm')
             ->leftJoin('e.obra', 'o');
 
-        return $clientes;
+        return $ticket;
     }
 
 }
