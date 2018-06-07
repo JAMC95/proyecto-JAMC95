@@ -12,6 +12,11 @@
         </span>
         </div>
         <br/>
+        {{ knp_pagination_filter(pagination, {
+            'e.nombre': 'Nombre',
+
+        }) }}
+        <br/>
         <table class="table table-bordered">
             <tr>
                 {# sorting of properties based on query components #}
@@ -53,6 +58,9 @@
 {% endblock %}
 
 {% block javascripts %}
-
+    <script>
+        $(function () {
+            $("button:first").html('Buscar')
+        });
+    </script>
 {% endblock %}
-

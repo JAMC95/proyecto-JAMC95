@@ -6,6 +6,11 @@
 {% block content %}
     <div class="container-fluid">
         <h1>Tickets</h1>
+        {% for mensaje in app.flashes('error') %}
+            <div class="alert alert-danger">
+                {{ mensaje }}
+            </div>
+        {% endfor %}
         <div class="form-group">
             {{ form_start(formulario) }}
             {{ form_widget(formulario) }}

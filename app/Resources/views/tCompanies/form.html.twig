@@ -7,6 +7,11 @@
 
     <div class="container-fluid">
         <h1>Empresas de transporte</h1>
+        {% for mensaje in app.flashes('error') %}
+            <div class="alert alert-danger">
+                {{ mensaje }}
+            </div>
+        {% endfor %}
     <div class="form-group">
         {{ form_start(formulario) }}
         <div class="col-sm-12">
