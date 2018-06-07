@@ -12,12 +12,15 @@
         </span>
         </div>
         <br/>
+        {{ knp_pagination_filter(pagination, {'e.nombreEmpresa': 'Nombre',
+            'e.nif': 'NIF'}) }}
+        <br/>
         <table class="table table-bordered">
             <tr>
                 {# sorting of properties based on query components #}
 
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Nombre', 'e.nombreempresa') }}
+                    {{ knp_pagination_sortable(pagination, 'Nombre', 'e.nombreEmpresa') }}
                 </th>
                 <th>
                     {{ knp_pagination_sortable(pagination, 'NIF', 'e.nif') }}

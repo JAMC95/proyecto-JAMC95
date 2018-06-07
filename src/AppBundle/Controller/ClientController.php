@@ -74,8 +74,8 @@ class ClientController extends Controller
     public function deleteLorryDriver($id) {
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
-        $lorryDriver = $em->getRepository('AppBundle:Empresa')->findOneBy(array('id' => $id));
-        $em->remove($lorryDriver);
+        $cliente = $em->getRepository('AppBundle:Empresa')->findOneBy(array('id' => $id));
+        $em->remove($cliente);
         try {
             $em->flush();
         } catch (OptimisticLockException $e) {

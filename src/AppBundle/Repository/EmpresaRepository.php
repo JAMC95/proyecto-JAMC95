@@ -16,11 +16,10 @@ class EmpresaRepository extends EntityRepository
     }
 
     public function findAlltCompanies() {
-        $companies = $this->createQueryBuilder('c')
-            ->select('c')
-            ->where('c.esempresadetransporte = true')
-            ->getQuery()
-            ->getResult();
+        $companies = $this->createQueryBuilder('e')
+            ->select('e')
+            ->where('e.esempresadetransporte = true');
+
 
         return $companies;
     }

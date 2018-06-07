@@ -6,6 +6,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Empresa;
 use AppBundle\Form\Type\TransportCompanyType;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,7 +18,10 @@ class TransportCompanyController extends Controller
      */
     public function showTransportCompanies(Request $request)
     {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
         $query = $this->getDoctrine()->getRepository('AppBundle:Empresa')->findAlltCompanies();
+        $query = $em->createQuery($query);
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
@@ -65,6 +69,24 @@ class TransportCompanyController extends Controller
             'formulario' => $form->createView(),
             'empresa' => $tcompnay
         ]);
+    }
+
+    /**
+     * @Route(path="/transposrt_delete/{id}", name="delete_tCompany")
+     * */
+    public function deleteLorryDriver($id) {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+        $lorryDriver = $em->getRepository('AppBundle:Empresa')->findOneBy(array('id' => $id));
+        $em->remove($lorryDriver);
+        try {
+            $em->flush();
+        } catch (OptimisticLockException $e) {
+            $this->addFlash('error', 'No se ha podido eliminar');
+            return $e;
+        }
+
+        return 'true';
     }
 
 }
