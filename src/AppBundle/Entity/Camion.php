@@ -74,6 +74,7 @@ class Camion
      * var Empresa
      * @ORM\ManyToOne(targetEntity="Empresa", inversedBy="camionHabitual")
      * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     * @Assert\NotBlank()
      */
     private $empresaTransportes;
 

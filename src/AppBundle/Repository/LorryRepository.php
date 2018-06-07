@@ -10,8 +10,8 @@ class LorryRepository extends EntityRepository
     public function findAllWithoutExecute() {
         $clientes = $this->createQueryBuilder('e')
             ->select('e')
-            ->join('e.camioneroHabitual', 'ch')
-            ->join('e.empresaTransportes', 'em');
+            ->leftJoin('e.camioneroHabitual', 'ch')
+            ->leftJoin('e.empresaTransportes', 'em');
 
         return $clientes;
     }

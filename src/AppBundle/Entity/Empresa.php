@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Empresa
@@ -22,35 +23,34 @@ class Empresa
     private $id;
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="NIF", type="string", length=10, nullable=false)
      */
     private $nif;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="nombre_empresa", type="string", nullable=false)
      */
     private $nombreEmpresa;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="direccion", type="string", length=50, nullable=false)
      */
     private $direccion;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="telefono", type="integer", nullable=false)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="telefono", type="integer", length="9",nullable=false)
      */
     private $telefono;
 
     /**
      * @var boolean
-     *
      * @ORM\Column(name="esEmpresaDeTransporte", type="boolean", nullable=false)
      */
     private $esempresadetransporte;

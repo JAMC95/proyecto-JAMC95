@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Camionero
@@ -21,37 +22,41 @@ class Camionero
      */
     private $id;
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="dni", type="integer", nullable=false)
+     * @var string
+     * @Assert\Regex(
+     *     pattern="/^\d{8}[a-zA-Z]$/",
+     *     message="Tu DNI debe de ser válido"
+     * )
+     * @Assert\NotBlank()
+     * @ORM\Column(name="dni", type="string", nullable=false)
      */
     private $dni;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="nombre_camionero", type="string", length=70, nullable=false)
      */
     public $nombreCamionero;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="dirección", type="string", length=70, nullable=false)
      */
     private $direccion;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="fecha_nacimiento", type="date", nullable=false)
      */
     private $fechaNacimiento;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="teléfono", type="integer", nullable=false)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="teléfono", type="integer", length=9, nullable=false)
      */
     private $telefono;
 
@@ -75,7 +80,7 @@ class Camionero
     /**
      * Set dni
      *
-     * @param integer $dni
+     * @param string $dni
      *
      * @return Camionero
      */
@@ -89,7 +94,7 @@ class Camionero
     /**
      * Get dni
      *
-     * @return integer
+     * @return string
      */
     public function getDni()
     {
