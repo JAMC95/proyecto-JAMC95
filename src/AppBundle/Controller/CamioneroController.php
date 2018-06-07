@@ -6,6 +6,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Camionero;
 use AppBundle\Form\Type\CamioneroType;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,7 +21,7 @@ class CamioneroController extends Controller
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->getRepository('AppBundle:Camionero')->findAll();
+        $query = $em->getRepository('AppBundle:Camionero')->findAllWithoutExecute();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
@@ -64,5 +65,24 @@ class CamioneroController extends Controller
             'lorryDriver' => $lorryDriver
         ]);
     }
+
+    /**
+     * @Route(path="/lorry_driver_del/{id}", name="delete_lorrydriver")
+     * */
+    public function deleteLorryDriver($id) {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+        $lorryDriver = $em->getRepository('AppBundle:Camionero')->findOneBy(array('id' => $id));
+        $em->remove($lorryDriver);
+        try {
+            $em->flush();
+        } catch (OptimisticLockException $e) {
+            $this->addFlash('error', 'No se ha podido eliminar');
+            return $e;
+        }
+
+        return 'true';
+    }
+
 
 }

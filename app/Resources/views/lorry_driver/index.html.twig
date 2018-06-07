@@ -12,18 +12,23 @@
         </span>
         </div>
         <br/>
+        {{ knp_pagination_filter(pagination, {
+            'e.nombreCamionero': 'Camionero',
+            'e.dni': 'DNI'
+        }) }}
+        <br/>
         <table class="table table-bordered">
             <tr>
                 {# sorting of properties based on query components #}
 
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Nombre', 'e.nombrecamionero') }}
+                    {{ knp_pagination_sortable(pagination, 'Nombre', 'e.nombreCamionero') }}
                 </th>
                 <th>
                     {{ knp_pagination_sortable(pagination, 'DNI', 'e.dni') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Fecha de nacimiento', 'e.fechanacimiento') }}
+                    {{ knp_pagination_sortable(pagination, 'Fecha de nacimiento', 'e.fechaNacimiento') }}
                 </th>
                 <th>
                     {{ knp_pagination_sortable(pagination, 'Dirección', 'e.direccion') }}
@@ -69,6 +74,10 @@
 {% endblock %}
 
 {% block javascripts %}
-
+    <script>
+        $(function () {
+            $("button:first").html('Buscar')
+        });
+    </script>
 {% endblock %}
 

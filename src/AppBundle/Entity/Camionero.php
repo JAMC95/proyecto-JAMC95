@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Camionero
  *
  * @ORM\Table(name="Camionero")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\LorryDriverRepository")
  */
 class Camionero
 {
