@@ -6,6 +6,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Material;
 use AppBundle\Form\Type\MaterialType;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,7 +21,7 @@ class MaterialController extends Controller
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->getRepository('AppBundle:Material')->findAll();
+        $query = $em->getRepository('AppBundle:Material')->findAllWithoutExecute();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
@@ -63,6 +64,24 @@ class MaterialController extends Controller
             'formulario' => $form->createView(),
             'material' => $material
         ]);
+    }
+
+    /**
+     * @Route(path="/material_del/{id}", name="delete_material")
+     * */
+    public function deleteLorry($id) {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+        $ticket = $em->getRepository('AppBundle:Material')->findOneBy(array('id' => $id));
+        $em->remove($ticket);
+        try {
+            $em->flush();
+        } catch (OptimisticLockException $e) {
+            $this->addFlash('error', 'No se ha podido eliminar');
+            return $e;
+        }
+
+        return 'true';
     }
 
 }

@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Material
  *
  * @ORM\Table(name="Material", uniqueConstraints={@ORM\UniqueConstraint(name="nombre", columns={"nombre"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\MaterialRepository")
  */
 class Material
 {
@@ -22,7 +24,7 @@ class Material
     private $id;
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="nombre", type="string", length=50, nullable=false)
      */
     private $nombre;

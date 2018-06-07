@@ -23,7 +23,7 @@
                 <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar cambios</button>
                 {% if material.id %}
 
-                    <a class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar</a>
+                    <a class="btn btn-danger" id="deleteButton"><i class="fa fa-trash"></i> Eliminar</a>
                 {% endif %}
 
 
@@ -31,4 +31,26 @@
         </div>
     </div>
     {{ form_end(formulario) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        {% if material.id %}
+        $('#deleteButton').click(function () {
+            var d = confirm('¿Seguro que deseas eliminarlo?');
+            if(d) {
+                $.ajax({
+                    url: '{{ path('delete_material', {'id' : material.id}) }}' ,
+                    type: 'get',
+                    success: function(result) {
+                        location.href = '{{path('materials')}}';
+                    },
+                    error: function(e){
+                        location.href = '{{path('materials')}}';
+                    }
+                });
+            }
+        });
+        {% endif %}
+    </script>
 {% endblock %}
