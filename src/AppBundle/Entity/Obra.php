@@ -3,12 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Obra
  *
  * @ORM\Table(name="Obra")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ObraRepository")
  */
 class Obra
 {
@@ -23,22 +25,22 @@ class Obra
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="nombre_obra", type="string", length=50, nullable=false)
      */
     private $nombreObra;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="direccion", type="string", length=50, nullable=false)
      */
     private $direccion;
 
     /**
      * @var integer
-     *
-     * @ORM\Column(name="telefono_encargado", type="integer", nullable=false)
+     * @Assert\NotBlank()
+     * @ORM\Column(name="telefono_encargado", type="integer", length=9, nullable=false)
      */
     private $telefonoEncargado;
 

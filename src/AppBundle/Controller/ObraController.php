@@ -6,6 +6,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Obra;
 use AppBundle\Form\Type\ObraType;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,7 +21,7 @@ class ObraController extends Controller
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        $query = $em->getRepository('AppBundle:Obra')->findAll();
+        $query = $em->getRepository('AppBundle:Obra')->findAllWithoutExecute();
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
@@ -63,6 +64,24 @@ class ObraController extends Controller
             'formulario' => $form->createView(),
             'works' => $works
         ]);
+    }
+
+    /**
+     * @Route(path="/works_del/{id}", name="delete_work")
+     * */
+    public function deleteLorryDriver($id) {
+        /** @var EntityManager $em */
+        $em = $this->getDoctrine()->getManager();
+        $cliente = $em->getRepository('AppBundle:Obra')->findOneBy(array('id' => $id));
+        $em->remove($cliente);
+        try {
+            $em->flush();
+        } catch (OptimisticLockException $e) {
+            $this->addFlash('error', 'No se ha podido eliminar');
+            return $e;
+        }
+
+        return 'true';
     }
 
 }

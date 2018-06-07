@@ -12,18 +12,21 @@
         </span>
         </div>
         <br/>
+        {{ knp_pagination_filter(pagination, {'e.nombreObra': 'Nombre',
+           }) }}
+        <br/>
         <table class="table table-bordered">
             <tr>
                 {# sorting of properties based on query components #}
 
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Nombre de la obra', 'e.nombreobra') }}
+                    {{ knp_pagination_sortable(pagination, 'Nombre de la obra', 'e.nombreObra') }}
                 </th>
                 <th>
                     {{ knp_pagination_sortable(pagination, 'Direccion', 'e.direccion') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Teléfono del encargado', 'e.telefonoencargado') }}
+                    {{ knp_pagination_sortable(pagination, 'Teléfono del encargado', 'e.telefonoEncargado') }}
                 </th>
                 <th>Acción</th>
 
@@ -60,6 +63,9 @@
 {% endblock %}
 
 {% block javascripts %}
-
+    <script>
+        $(function () {
+            $("button:first").html('Buscar')
+        });
+    </script>
 {% endblock %}
-
