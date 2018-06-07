@@ -45,7 +45,7 @@ class Empresa
     /**
      * @var integer
      * @Assert\NotBlank()
-     * @ORM\Column(name="telefono", type="integer", length="9",nullable=false)
+     * @ORM\Column(name="telefono", type="integer", length=9, nullable=false)
      */
     private $telefono;
 
