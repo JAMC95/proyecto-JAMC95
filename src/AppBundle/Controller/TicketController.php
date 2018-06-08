@@ -146,4 +146,37 @@ class TicketController extends Controller
         return 'true';
     }
 
+    /**
+     * @Route("/reportPrint", name="informeImpreso")
+     */
+    public function printReport()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $query = $em->getRepository('AppBundle:Ticket')->findAllWithoutExecute();
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            1,
+            3000
+        );
+        $html = $this->renderView('printer/report.html.twig', array(
+            'pagination' => $pagination
+        ));
+        $snappy = $this->get('knp_snappy.pdf');
+
+        $filename = 'Informe';
+
+
+        return new Response($snappy->getOutputFromHtml($html),200, array(
+
+                'Content-Type'          => 'application/pdf',
+
+                'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
+
+            )
+
+        );
+    }
+
 }

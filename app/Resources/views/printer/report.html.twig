@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Informe</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+       tr, td {
+           padding-left: 1em;
+           padding-right: 1em;
+           font-size: 25px;
+       }
+
+       tr {
+           font-size:18px;
+       }
+        a {
+            color: black;
+            text-decoration: none; /* no underline */
+        }
+    </style>
+</head>
+<body>
+<table class="table table-bordered">
+    <tr>
+        {# sorting of properties based on query components #}
+
+        <th>
+            {{ knp_pagination_sortable(pagination, 'Matrícula', 'c.matricula') }}
+        </th>
+        <th>
+            {{ knp_pagination_sortable(pagination, 'Remolque', 'c.matriculaRemolque') }}
+        </th>
+        <th>
+            {{ knp_pagination_sortable(pagination, 'Camionero', 'cDriver.nombreCamionero') }}
+        </th>
+        <th>
+            {{ knp_pagination_sortable(pagination, 'Empresa de transporte', 'em.nombreEmpresa') }}
+        </th>
+        <th>
+            {{ knp_pagination_sortable(pagination, 'Cliente', 'cli.nombreEmpresa') }}
+        </th>
+        <th>
+            {{ knp_pagination_sortable(pagination, 'Obra', 'o.nombreObra') }}
+        </th>
+        <th>
+            {{ knp_pagination_sortable(pagination, 'Fecha', 'e.fecha') }}
+        </th>
+        <th>
+            {{ knp_pagination_sortable(pagination, 'Tara', 'e.tara') }}
+        </th>
+        <th>
+            {{ knp_pagination_sortable(pagination, 'Bruto', 'e.bruto') }}
+        </th>
+        <th>
+            <a href="#">Neto</a>
+        </th>
+
+
+    </tr>
+
+    {# table body #}
+    {% for entry in pagination %}
+
+        <tr {% if loop.index is odd %}class="color"{% endif %}>
+
+            <td>{{ entry.camion }}</td>
+            <td>{{ entry.camion.matricularemolque }}</td>
+            <td>{{ entry.camionero }}</td>
+            <td>{{ entry.empresaTransporte }}</td>
+            <td>{{ entry.cliente }}</td>
+            <td>{{ entry.obra }}</td>
+            <td>{{ entry.fecha | date("H:i - m/d/Y")  }}</td>
+            <td>{{ entry.tara }}</td>
+            <td>{{ entry.bruto }}</td>
+            <td>{{ entry.bruto - entry.tara }}</td>
+        </tr>
+
+    {% endfor %}
+</table>
+
+</body>
+</html>
+
