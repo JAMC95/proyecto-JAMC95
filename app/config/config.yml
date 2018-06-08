@@ -66,7 +66,7 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     form_themes:
-      - 'bootstrap_4_horizontal_layout.html.twig'
+      - 'bootstrap_3_horizontal_layout.html.twig'
 
 knp_paginator:
     page_range: 5                       # number of links showed in the pagination menu (e.g: you have 10 pages, a page_range of 3, on the 5th page you'll see links to page 4, 5, 6)

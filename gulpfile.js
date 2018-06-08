@@ -38,6 +38,6 @@ gulp.task('default', function() {
         .pipe(gulp.dest('web/dist/js/select2'));
 
     // copiar fuentes
-    gulp.src(['node_modules/font-awesome/fonts/*', 'web/css/lato/fonts/**'])
+    gulp.src(['node_modules/font-awesome/fonts/*', 'node_modules/bootstrap-sass/assets/fonts/**/*', 'web/css/lato/fonts/**'])
         .pipe(gulp.dest('web/dist/fonts'));
 });
