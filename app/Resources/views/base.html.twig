@@ -19,6 +19,12 @@
             $('select').select2({
                 theme: "bootstrap"
             });
+            $(function () {
+
+                $('li[name=datos].active').parent().addClass('menu-content').attr('aria-expanded', false);
+                $('li[name=stock].active').parent().addClass('menu-content').attr('aria-expanded', false);
+
+            });
         </script>
     </body>
 

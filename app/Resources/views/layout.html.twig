@@ -13,23 +13,23 @@
                         <i class="fa fa-dashboard fa-lg"></i> Inicio
                     </a>
                 </li>
-                <li data-toggle="collapse"  data-target="#products" class="collapsed">
+                <li data-toggle="collapse"  data-target="#datos" class="collapsed">
                     <a href="#"><i class="fa fa-database fa-lg"></i> Gestión de datos <span class="arrow"></span></a>
                 </li>
-                <ul class="sub-menu collapse" id="products">
-                    <li {% if app.request.attributes.get('_route') == 'lorry_driver' %} class="active"{% endif %}><a href="{{ path('lorry_driver') }}">Camioneros</a></li>
-                    <li {% if app.request.attributes.get('_route') == 'lorries' %} class="active"{% endif %}><a href="{{ path('lorries') }}">Camiones</a></li>
-                    <li {% if app.request.attributes.get('_route') == 'client' %} class="active"{% endif %}><a href="{{ path('client') }}">Clientes</a></li>
-                    <li {% if app.request.attributes.get('_route') == 'tcompanies' %} class="active"{% endif %}><a href="{{ path('tcompanies') }}">Empresa de transporte</a></li>
-                    <li {% if app.request.attributes.get('_route') == 'works' %} class="active"{% endif %}><a href="{{ path('works') }}">Obras</a></li>
-                    <li {% if app.request.attributes.get('_route') == 'materials' %} class="active"{% endif %}><a href="{{ path('materials') }}">Materiales</a></li>
+                <ul class="sub-menu collapse" id="datos">
+                    <li name="datos" {% if app.request.attributes.get('_route') == 'lorry_driver' %} class="active"{% endif %}><a href="{{ path('lorry_driver') }}">Camioneros</a></li>
+                    <li name="datos" {% if app.request.attributes.get('_route') == 'lorries' %} class="active"{% endif %}><a href="{{ path('lorries') }}">Camiones</a></li>
+                    <li name="datos" {% if app.request.attributes.get('_route') == 'client' %} class="active"{% endif %}><a href="{{ path('client') }}">Clientes</a></li>
+                    <li name="datos" {% if app.request.attributes.get('_route') == 'tcompanies' %} class="active"{% endif %}><a href="{{ path('tcompanies') }}">Empresa de transporte</a></li>
+                    <li name="datos" {% if app.request.attributes.get('_route') == 'works' %} class="active"{% endif %}><a href="{{ path('works') }}">Obras</a></li>
+                    <li name="datos" {% if app.request.attributes.get('_route') == 'materials' %} class="active"{% endif %}><a href="{{ path('materials') }}">Materiales</a></li>
                 </ul>
-                <li data-toggle="collapse" data-target="#service" class="collapsed">
+                <li data-toggle="collapse" data-target="#stock" class="collapsed">
                     <a href="#"><i class="fa fa-sticky-note fa-lg"></i> Ver stock <span class="arrow"></span></a>
                 </li>
-                <ul class="sub-menu collapse" id="service">
-                    <li {% if app.request.attributes.get('_route') == 'palets' %} class="active"{% endif %}><a href="{{ path('palets') }}">Palets</a></li>
-                    <li {% if app.request.attributes.get('_route') == 'sacks' %} class="active"{% endif %}><a href="{{ path('sacks') }}">Sacas</a></li>
+                <ul class="sub-menu collapse" id="stock">
+                    <li name="stock" {% if app.request.attributes.get('_route') == 'palets' %} class="active"{% endif %}><a href="{{ path('palets') }}">Palets</a></li>
+                    <li name="stock" {% if app.request.attributes.get('_route') == 'sacks' %} class="active"{% endif %}><a href="{{ path('sacks') }}">Sacas</a></li>
                 </ul>
 
 
@@ -55,4 +55,3 @@
     </div>
 
 {% endblock %}
-
