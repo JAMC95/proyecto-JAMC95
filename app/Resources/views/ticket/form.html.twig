@@ -25,6 +25,8 @@
                 {% if ticket.id %}
 
                     <a class="btn btn-danger" id="deleteButton"><i class="fa fa-trash"></i> Eliminar</a>
+                    <a class="btn btn-warning" id="printTicket" href="#"><i class="fa fa-print" aria-hidden="true"></i>Imprimir</a>
+
                 {% endif %}
 
 
@@ -156,6 +158,10 @@
                     }
                 });
             }
+        });
+        $("#printTicket").click(function () {
+            var win = window.open('{{ path('ticket_impreso', {'ticket': ticket.id}) }}');
+            win.focus();
         });
         {% endif %}
     </script>
