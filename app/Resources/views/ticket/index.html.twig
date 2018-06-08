@@ -17,6 +17,7 @@
             'em.nombreEmpresa': 'Empresa de Transporte',
             'cli.nombreEmpresa': 'Cliente',
             'o.nombreObra': 'Obra',
+            'm.nombre': 'Material'
         }) }}
         <br/>
         <div class="count">
@@ -39,7 +40,7 @@
                     {{ knp_pagination_sortable(pagination, 'Camionero', 'cDriver.nombreCamionero') }}
                 </th>
                 <th>
-                    {{ knp_pagination_sortable(pagination, 'Empresa de transporte', 'em.nombreEmpresa') }}
+                    {{ knp_pagination_sortable(pagination, 'E. de transporte', 'em.nombreEmpresa') }}
                 </th>
                 <th>
                     {{ knp_pagination_sortable(pagination, 'Cliente', 'cli.nombreEmpresa') }}
@@ -49,6 +50,9 @@
                 </th>
                 <th>
                     {{ knp_pagination_sortable(pagination, 'Fecha', 'e.fecha') }}
+                </th>
+                <th>
+                    {{ knp_pagination_sortable(pagination, 'Material', 'm.nombre') }}
                 </th>
                 <th>
                     {{ knp_pagination_sortable(pagination, 'Tara', 'e.tara') }}
@@ -76,6 +80,7 @@
                     <td>{{ entry.cliente }}</td>
                     <td>{{ entry.obra }}</td>
                     <td>{{ entry.fecha | date("H:i - m/d/Y")  }}</td>
+                    <td>{{ entry.material }}</td>
                     <td>{{ entry.tara }}</td>
                     <td>{{ entry.bruto }}</td>
                     <td>{{ entry.bruto - entry.tara }}</td>

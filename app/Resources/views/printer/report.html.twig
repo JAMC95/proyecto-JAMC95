@@ -27,6 +27,10 @@
             color: black;
             text-decoration: none; /* no underline */
         }
+        p {
+            padding-top: 2em;
+            font-size: 30px;
+        }
     </style>
 </head>
 <body>
@@ -56,6 +60,9 @@
             {{ knp_pagination_sortable(pagination, 'Fecha', 'e.fecha') }}
         </th>
         <th>
+            {{ knp_pagination_sortable(pagination, 'Material', 'm.nombre') }}
+        </th>
+        <th>
             {{ knp_pagination_sortable(pagination, 'Tara', 'e.tara') }}
         </th>
         <th>
@@ -67,7 +74,7 @@
 
 
     </tr>
-
+    {% set totalNeto = 0 %}
     {# table body #}
     {% for entry in pagination %}
 
@@ -80,14 +87,18 @@
             <td>{{ entry.cliente }}</td>
             <td>{{ entry.obra }}</td>
             <td>{{ entry.fecha | date("H:i - m/d/Y")  }}</td>
+            <td>{{ entry.material }}</td>
             <td>{{ entry.tara }}</td>
             <td>{{ entry.bruto }}</td>
             <td>{{ entry.bruto - entry.tara }}</td>
+            {% set totalNeto = (entry.bruto - entry.tara) + totalNeto %}
         </tr>
 
     {% endfor %}
+
 </table>
 
+<p>Peso total: {{ totalNeto }}</p>
 </body>
 </html>
 
