@@ -69,15 +69,23 @@
 {% endblock %}
 
 {% block stylesheets %}
+    <style>
+        .inputCustom {
+            width: 140px;
+            display: inline-block;
 
+        }
+    </style>
 {% endblock %}
 
 {% block javascripts %}
     <script>
         $(function () {
-            $("button:first").html('Buscar')
+            $("button:first").html('Buscar').addClass('btn btn-default');
+            $("input:first").addClass('form-control inputCustom');
         });
     </script>
-
 {% endblock %}
+
+
 
