@@ -10,15 +10,15 @@
             </div>
         {% endfor %}
         {# total items count #}
-        <div class="count">
-        <span class="label label-primary">
-            Entradas en total: {{ pagination.getTotalItemCount }}
-        </span>
-        </div>
-        <br/>
         {{ knp_pagination_filter(pagination, {'e.matricula': 'Matricula',
             'e.matriculaRemolque': 'Remolque',
         'ch.nombreCamionero': 'Camoinero'}) }}
+        <br/>
+        <div class="count">
+        <span class="label label-primary">
+            Camiones en total: {{ pagination.getTotalItemCount }}
+        </span>
+        </div>
         <br/>
         <table class="table table-bordered">
             <tr>

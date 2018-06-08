@@ -7,15 +7,15 @@
 
         {# total items count #}
         <div class="count">
-        <span class="label label-primary">
-            Entradas en total: {{ pagination.getTotalItemCount }}
-        </span>
-        </div>
-        <br/>
         {{ knp_pagination_filter(pagination, {
             'e.nombre': 'Nombre',
 
         }) }}
+        <br/>
+        <span class="label label-primary">
+            Entradas en total: {{ pagination.getTotalItemCount }}
+        </span>
+        </div>
         <br/>
         <table class="table table-bordered">
             <tr>

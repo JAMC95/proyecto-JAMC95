@@ -10,16 +10,15 @@
             </div>
         {% endfor %}
         {# total items count #}
-        <div class="count">
-        <span class="label label-primary">
-            Entradas en total: {{ pagination.getTotalItemCount }}
-        </span>
-        </div>
-        <br/>
         {{ knp_pagination_filter(pagination, {'c.nombreEmpresa': 'Nombre',
             'c.nif': 'NIF'}) }}
         <br/>
-
+        <div class="count">
+        <span class="label label-primary">
+            Clientes en total: {{ pagination.getTotalItemCount }}
+        </span>
+        </div>
+        <br/>
         <table class="table table-bordered">
             <tr>
                 {# sorting of properties based on query components #}
