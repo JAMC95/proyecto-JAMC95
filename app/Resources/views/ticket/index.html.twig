@@ -74,7 +74,11 @@
                 <tr {% if loop.index is odd %}class="color"{% endif %}>
 
                     <td>{{ entry.camion }}</td>
+                    {% if entry.camion %}
                     <td>{{ entry.camion.matricularemolque }}</td>
+                    {% else %}
+                    <td></td>
+                    {% endif %}
                     <td>{{ entry.camionero }}</td>
                     <td>{{ entry.empresaTransporte }}</td>
                     <td>{{ entry.cliente }}</td>

@@ -2,8 +2,39 @@
 
 
 {% block content %}
-    <div class="row">
+    <div class="container-fluid">
+        <section>
+        <div class="col-md-12">
+            <h1>Hermanos Moral Cantera Añoreta</h1>
+        </div>
 
+        <div class="wrapper">
+        <div class="col-md-12">
+        <a href="{{ path('tickets') }}" class="btn btn-info btn-block"><span id="textLarge">Tickets</span></a>
+        </div>
+            <div class="col-md-12">
+                <h1>Gestión de datos</h1>
+            </div>
+        <div class="col-md-12">
+        <a href="{{ path('lorry_driver') }}" class="btn btn-info btn-block" >Camioneros</a>
+        <a href="{{ path('lorries') }}" class="btn btn-default btn-block" >Camiones</a>
+        <a href="{{ path('client') }}" class="btn btn-info btn-block" >Clientes</a>
+        <a href="{{ path('tcompanies') }}" class="btn btn-default btn-block" >Empresas de transporte</a>
+        <a href="{{ path('works') }}" class="btn btn-info btn-block" >Obras</a>
+        <a href="{{ path('materials') }}" class="btn btn-default btn-block" >Materiales</a>
+        </div>
+
+            <div class="col-md-12">
+                <h1>Stock</h1>
+            </div>
+            <div class="col-md-12">
+               <a href="{{ path('works') }}" class="btn btn-info btn-block" >Palets</a>
+               <a href="{{ path('materials') }}" class="btn btn-default btn-block" >Sacas</a>
+            </div>
+
+        </div>
+
+        </section>
 
     </div>
 {% endblock %}
