@@ -17,7 +17,7 @@
        tr, td {
            padding-left: 1em;
            padding-right: 1em;
-           font-size: 25px;
+           font-size: 18px;
        }
 
        tr {
@@ -48,7 +48,7 @@
             {{ knp_pagination_sortable(pagination, 'Camionero', 'cDriver.nombreCamionero') }}
         </th>
         <th>
-            {{ knp_pagination_sortable(pagination, 'Empresa de transporte', 'em.nombreEmpresa') }}
+            {{ knp_pagination_sortable(pagination, 'E. de transporte', 'em.nombreEmpresa') }}
         </th>
         <th>
             {{ knp_pagination_sortable(pagination, 'Cliente', 'cli.nombreEmpresa') }}
@@ -81,7 +81,11 @@
         <tr {% if loop.index is odd %}class="color"{% endif %}>
 
             <td>{{ entry.camion }}</td>
+            {% if entry.camion %}
             <td>{{ entry.camion.matricularemolque }}</td>
+                {% else %}
+                <td></td>
+            {% endif %}
             <td>{{ entry.camionero }}</td>
             <td>{{ entry.empresaTransporte }}</td>
             <td>{{ entry.cliente }}</td>

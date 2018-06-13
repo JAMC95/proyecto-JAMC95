@@ -47,7 +47,7 @@ class TicketController extends Controller
      * @Route(path="/ticketNew/", name="new_ticket")
      * @Route(path="/ticketEdit/{ticket}", name="edit_ticket")
       */
-    public function materialAlter(Request $request, Ticket $ticket = null)
+    public function ticketAlter(Request $request, Ticket $ticket = null)
     {
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
@@ -56,13 +56,38 @@ class TicketController extends Controller
             $em->persist($ticket);
             $ticket->setFecha(date_create(date('Y-m-d H:m:s')));
         }
+        $cantidadAnterior = $ticket->getCantidadRecipiente();
 
         $form = $this->createForm(TicketType::class, $ticket);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             try {
+                $cantiadActual = $ticket->getCantidadRecipiente();
 
+                if($ticket->getTieneRecipiente() && $cantidadAnterior != $cantiadActual) {
+                  $tipo =  $ticket->getTipoRecipiente();
+                    $em->persist($tipo);
+                    $total = $tipo->getCantidad();
+
+                    if($cantidadAnterior > $cantiadActual) {
+                        $total = $total + ($cantidadAnterior - $cantiadActual);
+                    }elseif ($cantidadAnterior < $cantiadActual) {
+                        $total = $total - ( $cantiadActual - $cantidadAnterior);
+                    }
+
+                    if($total < 0) {
+                        $this->addFlash('error', 'No hay suficientes ' . $tipo->getTipo() . ' en stock');
+                        return $this->render('ticket/form.html.twig', [
+                            'formulario' => $form->createView(),
+                            'ticket' => $ticket
+                        ]);
+                    } else {
+                        $tipo->setCantidad($total);
+                    }
+
+
+                }
                 $em->flush();
                 return $this->redirectToRoute('tickets');
             }
@@ -169,6 +194,7 @@ class TicketController extends Controller
 
 
         return new Response($snappy->getOutputFromHtml($html),200, array(
+                'orientation'           =>  'Landscape',
 
                 'Content-Type'          => 'application/pdf',
 

@@ -23,7 +23,7 @@ class Recipiente
     /**
      * @var integer
      *
-     * @ORM\Column(name="cantidad", type="string", length=50, nullable=false)
+     * @ORM\Column(name="cantidad", type="integer", length=50, nullable=false)
      */
     private $cantidad;
 
@@ -62,7 +62,7 @@ class Recipiente
     /**
      * Get cantidad
      *
-     * @return string
+     * @return integer
      */
     public function getCantidad()
     {

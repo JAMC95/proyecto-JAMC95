@@ -20,7 +20,7 @@ class StockController extends Controller
         /** @var EntityManager $em */
         $em = $this->getDoctrine()->getManager();
 
-        $palet = $em->getRepository('AppBundle:Recipiente')->findOneBy(['tipo' => 'Palet']);
+        $palet = $em->getRepository('AppBundle:Recipiente')->findOneBy(['tipo' => 'Palets']);
 
         $form = $this->createForm(StockType::class, $palet);
 
@@ -28,7 +28,7 @@ class StockController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $em->flush();
-                return $this->redirectToRoute('saks');
+                return $this->redirectToRoute('palets');
             }
             catch (\Exception $e) {
                 $this->addFlash('error', 'No se han podido guardar los cambios');
@@ -56,7 +56,7 @@ class StockController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $em->flush();
-                return $this->redirectToRoute('saks');
+                return $this->redirectToRoute('sacks');
             }
             catch (\Exception $e) {
                 $this->addFlash('error', 'No se han podido guardar los cambios');
