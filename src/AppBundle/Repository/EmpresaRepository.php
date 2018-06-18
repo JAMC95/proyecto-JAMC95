@@ -9,8 +9,7 @@ class EmpresaRepository extends EntityRepository
 {
     public function findAllClientes() {
         $clientes = $this->createQueryBuilder('c')
-            ->select('c')
-            ->where('c.esempresadetransporte = false');
+            ->select('c');
 
         return $clientes;
     }
@@ -30,8 +29,7 @@ class EmpresaRepository extends EntityRepository
         return $companies;
     }
     public function findAlltClientsType() {
-        $companies = $this->createQueryBuilder('c')
-            ->where('c.esempresadetransporte = false');
+        $companies = $this->createQueryBuilder('c');
         return $companies;
     }
 }

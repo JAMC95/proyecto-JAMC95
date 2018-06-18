@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Camionero;
 use AppBundle\Form\Type\CamioneroType;
+use AppBundle\Resources\Validator;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -52,12 +53,22 @@ class CamioneroController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            try {
-                $em->flush();
-                return $this->redirectToRoute('lorry_drivers');
-            }
-            catch (\Exception $e) {
-                $this->addFlash('error', 'No se han podido guardar los cambios');
+            $v = new Validator();
+            if($v->isValid($lorryDriver->getDni())) {
+                try {
+                    $em->flush();
+                    return $this->redirectToRoute('lorry_driver');
+                }
+                catch (\Exception $e) {
+                    $this->addFlash('error', 'No se han podido guardar los cambios');
+                }
+
+            } else {
+                $this->addFlash('error', 'DNI/NIE incorrecto');
+                return $this->render('lorry_driver/form.html.twig', [
+                    'formulario' => $form->createView(),
+                    'lorryDriver' => $lorryDriver
+                ]);
             }
         }
         return $this->render('lorry_driver/form.html.twig', [

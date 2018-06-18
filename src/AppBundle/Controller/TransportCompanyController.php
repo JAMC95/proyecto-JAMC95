@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Empresa;
 use AppBundle\Form\Type\TransportCompanyType;
+use AppBundle\Resources\Validator;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -57,12 +58,20 @@ class TransportCompanyController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            try {
-                $em->flush();
-                return $this->redirectToRoute('tcompanies');
-            }
-            catch (\Exception $e) {
-                $this->addFlash('error', 'No se han podido guardar los cambios');
+            $v = new Validator();
+            if($v->isValid($tcompnay->getNif())) {
+                try {
+                    $em->flush();
+                    return $this->redirectToRoute('tcompanies');
+                } catch (\Exception $e) {
+                    $this->addFlash('error', 'No se han podido guardar los cambios');
+                }
+            } else {
+                $this->addFlash('error', 'Error, NIF/DNI incorrecto');
+                return $this->render('tCompanies/form.html.twig', [
+                    'formulario' => $form->createView(),
+                    'empresa' => $tcompnay
+                ]);
             }
         }
         return $this->render('tCompanies/form.html.twig', [

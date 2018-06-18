@@ -120,9 +120,14 @@
 {% block javascripts %}
     <script>
         $(function () {
+            var firstInput = $("input:first");
             $("button:first").html('Buscar').addClass('btn btn-default');
-            $("input:first").addClass('form-control inputCustom');
-            //console.log(window.location.href.split('?')[1].split('&'))
+            firstInput.addClass('form-control inputCustom');
+
+            window.history.pushState('page2', 'Tickets', window.location.href + '%');
+            if(firstInput.val().slice(-1) !== '%' && firstInput.val().length > 0) {
+            location.reload();
+            }
         });
         $('#informe').click(function () {
             var extraURL = window.location.href.split('?')? window.location.href.split('?')[1] : '';

@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Empresa;
 use AppBundle\Form\Type\ClientType;
+use AppBundle\Resources\Validator;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\OptimisticLockException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -54,12 +55,20 @@ class ClientController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            try {
-                $em->flush();
-                return $this->redirectToRoute('client');
-            }
-            catch (\Exception $e) {
-                $this->addFlash('error', 'No se han podido guardar los cambios');
+            $v = new Validator();
+            if($v->isValid($client->getNif())) {
+                try {
+                    $em->flush();
+                    return $this->redirectToRoute('client');
+                } catch (\Exception $e) {
+                    $this->addFlash('error', 'No se han podido guardar los cambios');
+                }
+            } else {
+                $this->addFlash('error', 'Error, NIF/DNI incorrecto');
+                return $this->render('client/form.html.twig', [
+                    'formulario' => $form->createView(),
+                    'empresa' => $client
+                ]);
             }
         }
         return $this->render('client/form.html.twig', [

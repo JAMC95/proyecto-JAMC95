@@ -28,6 +28,7 @@ class CamioneroType extends AbstractType
             ->add('fecha_nacimiento', DateType::class, [ 'label' => 'Fecha de nacimiento',
                 'input'  => 'datetime',
                 'widget' => 'choice',
+                'years' => range(date('Y')-100, date('Y')-18),
                 'format' => 'ddMMyyyy',
                 'placeholder' => array(
                     'year' => 'Año', 'month' => 'Mes', 'day' => 'Día',

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -10,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="Camionero")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LorryDriverRepository")
+ * @UniqueEntity(fields={"dni"}, message="No se puede repetir el DNI/NIE")
  */
 class Camionero
 {
@@ -23,10 +25,6 @@ class Camionero
     private $id;
     /**
      * @var string
-     * @Assert\Regex(
-     *     pattern="/^\d{8}[a-zA-Z]$/",
-     *     message="Tu DNI debe de ser válido"
-     * )
      * @Assert\NotBlank()
      * @ORM\Column(name="dni", type="string", nullable=false)
      */
