@@ -53,6 +53,10 @@ class Camionero
 
     /**
      * @var integer
+     * @Assert\Range(
+     *      min = 600000000,
+     *      minMessage = "Introduce al menos 9 cifras"
+     * )
      * @Assert\NotBlank()
      * @ORM\Column(name="teléfono", type="integer", length=9, nullable=false)
      */
