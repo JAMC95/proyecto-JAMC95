@@ -38,9 +38,9 @@ class Ticket
     /**
      * @var bool
      *
-     * @ORM\Column(name="tieneRecipiente", type="boolean", nullable=true)
+     * @ORM\Column(name="transporteIncluido", type="boolean", nullable=true)
      */
-    private $tieneRecipiente;
+    private $transporteIncluido;
 
     /**
      * @var integer
@@ -169,29 +169,7 @@ class Ticket
         return $this->bruto;
     }
 
-    /**
-     * Set tieneRecipiente
-     *
-     * @param boolean $tieneRecipiente
-     *
-     * @return Ticket
-     */
-    public function setTieneRecipiente($tieneRecipiente)
-    {
-        $this->tieneRecipiente = $tieneRecipiente;
 
-        return $this;
-    }
-
-    /**
-     * Get tieneRecipiente
-     *
-     * @return boolean
-     */
-    public function getTieneRecipiente()
-    {
-        return $this->tieneRecipiente;
-    }
 
     /**
      * Set cantidadRecipiente
@@ -405,4 +383,24 @@ class Ticket
     {
         return $this->fecha;
     }
+
+    /**
+     * @return bool
+     */
+    public function isTransporteIncluido()
+    {
+        return $this->transporteIncluido;
+    }
+
+    /**
+     * @param bool $transporteIncluido
+     * @return Ticket
+     */
+    public function setTransporteIncluido($transporteIncluido)
+    {
+        $this->transporteIncluido = $transporteIncluido;
+        return $this;
+    }
+
+
 }

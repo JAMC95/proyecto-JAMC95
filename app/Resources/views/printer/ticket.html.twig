@@ -39,8 +39,10 @@
 <div>
     <p>Transportista: {{ ticket.empresaTransporte.nombreEmpresa }} <br/> {{ ticket.empresaTransporte.nif }}</p>
     <p>Operador: {{ ticket.camionero.nombreCamionero }} <br/> {{ ticket.camionero.dni }}</p>
+
 </div>
 <br/>
+<p>Transporte incluido: {{ ticket.transporteIncluido ? 'Si' : 'No' }}</p>
 <br/>
 <div>
     <p>Material cargado: {{ ticket.material }}</p>

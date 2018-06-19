@@ -65,7 +65,7 @@ class TicketController extends Controller
             try {
                 $cantiadActual = $ticket->getCantidadRecipiente();
 
-                if($ticket->getTieneRecipiente() && $cantidadAnterior != $cantiadActual) {
+                if($ticket->getCantidadRecipiente() && $cantidadAnterior != $cantiadActual) {
                   $tipo =  $ticket->getTipoRecipiente();
                     $em->persist($tipo);
                     $total = $tipo->getCantidad();
