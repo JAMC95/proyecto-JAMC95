@@ -52,6 +52,11 @@
         var bruto =  $('#ticket_bruto');
 
         $( document ).ready(function () {
+            var lastInput = $("#ticket_cantidadRecipiente");
+
+            if(lastInput.val() > 0) {
+                esRecipiente.trigger('click');
+            }
             if(esRecipiente.is(':checked')) {
                 tipoRecipiente.show();
                 labelTipoRe.show();
