@@ -4,12 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Camion
- * @ORM\Table(name="Camion", uniqueConstraints={@UniqueConstraint(name="uniqueC", columns={"matrícula"})})
+ * @ORM\Table(name="Camion")})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\LorryRepository")
+ * @UniqueEntity(fields={"matricula", "matriculaRemolque"}, message="No puede existir dos camiones con las dos matrículas iguales")
  */
 class Camion
 {
