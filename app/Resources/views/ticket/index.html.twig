@@ -17,7 +17,8 @@
             'em.nombreEmpresa': 'Empresa de Transporte',
             'cli.nombreEmpresa': 'Cliente',
             'o.nombreObra': 'Obra',
-            'm.nombre': 'Material'
+            'm.nombre': 'Material',
+            'Fecha': 'e.fecha'
         }) }}
         <br/>
         <div class="count">
@@ -124,9 +125,13 @@
             $("button:first").html('Buscar').addClass('btn btn-default');
             firstInput.addClass('form-control inputCustom');
 
+
+            var table = document.getElementsByTagName('tbody');
+            if($(table[0]).children().length === 1)
             window.history.pushState('page2', 'Tickets', window.location.href + '%');
+
             if(firstInput.val().slice(-1) !== '%' && firstInput.val().length > 0) {
-            location.reload();
+                location.reload();
             }
         });
         $('#informe').click(function () {
